@@ -1,0 +1,1 @@
+const t=document.querySelector(".b-about .__photos");if(t){const e=(g,o)=>{const r=t.querySelector(g);r&&gsap.fromTo(r,{y:-o},{y:o,ease:"none",scrollTrigger:{trigger:t,scrub:1.5,start:"top bottom",end:"bottom top"}})};e(".__img1",25),e(".__img3",55),e(".__img2",-60),e(".__img4",-80)}

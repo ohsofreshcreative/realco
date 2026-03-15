@@ -1,0 +1,26 @@
+.b-hero-about {
+  position: relative;
+  .__nr1 {
+    b,
+    strong {
+      color: var(--color-action);
+	  font-size:20px
+    }
+  }
+  .__nr2 {
+    b,
+    strong {
+      color: var(--color-secondary-light);
+	  font-size:20px
+    }
+  }
+}
+
+.b-hero-about::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #1d3f34;
+  z-index: 1;
+  margin-bottom: 200px;
+}

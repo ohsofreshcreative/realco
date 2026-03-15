@@ -1,0 +1,77 @@
+.b-about {
+	.__txt {
+		p {
+			margin-bottom: 16px;
+		}
+
+		p:last-child {
+			margin-bottom: 0 !important;
+		}
+	}
+
+	/* Obrazki 2, 3, 4 - teraz kontenery mają position: absolute */
+	.__img2,
+	.__img3,
+	.__img4 {
+		position: absolute;
+		z-index: 2;
+		/* Aby były nad __img1 */
+	}
+
+	/* Obrazki wewnątrz absolutnych kontenerów wypełniają je */
+	.__img2 img,
+	.__img3 img,
+	.__img4 img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		/* Jeśli kontenery mają mieć radius */
+	}
+
+	/* Pozycje i wymiary dla kontenerów */
+	.__img2 {
+		width: 320px;
+		height: 200px;
+		inset: 96px auto auto -109px;
+	}
+
+	.__img3 {
+		width: 360px;
+		height: 200px;
+		inset: -104px -120px auto auto;
+	}
+
+	.__img4 {
+		width: 400px;
+		height: 240px;
+		inset: auto -96px -120px auto;
+	}
+
+}
+
+@media only screen and (max-width: 768px) {
+
+	.b-about {
+	/* Pozycje i wymiary dla kontenerów */
+	.__img2 {
+		width: 40%;
+		height: auto;
+		aspect-ratio: 2 / 1;
+		inset: 56px auto auto -16px;
+	}
+
+	.__img3 {
+		width: 40%;
+		height: auto;
+		aspect-ratio: 2 / 1;
+		inset: -80px -16px auto auto;
+	}
+
+	.__img4 {
+		width: 40%;
+		height: auto;
+		aspect-ratio: 2 / 1;
+		inset: auto 24px -128px auto;
+	}
+	}
+}
