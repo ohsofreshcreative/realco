@@ -1,5 +1,5 @@
 function initializeInfoBlockFilters() {
-  console.log('--- Inicjalizacja filtróws ---');
+  console.log('--- Inicjalizacja filtrów ---');
   const infoBlocks = document.querySelectorAll('.b-info');
   
   if (infoBlocks.length === 0) {
@@ -17,13 +17,22 @@ function initializeInfoBlockFilters() {
       return;
     }
 
-    const dzialkaOd = filterContainer.querySelector('input[placeholder="od"]');
-    const dzialkaDo = filterContainer.querySelector('input[placeholder="do"]');
+    // Używamy ID, które są w HTML, dla pewności
+    const dzialkaOd = filterContainer.querySelector('#filter-dzialka-od');
+    const dzialkaDo = filterContainer.querySelector('#filter-dzialka-do');
     const statusCheckboxes = filterContainer.querySelectorAll('.filter-status-checkbox');
-    const resetButton = filterContainer.querySelector('[id^="filter-reset-button"]');
-    const tableRows = tableBody.querySelectorAll('tr');
+    const resetButton = filterContainer.querySelector('#filter-reset-button');
     
-    console.log(`[Blok ${index + 1}] Znaleziono ${tableRows.length} wierszy do filtrowania.`);
+    // --- KLUCZOWA ZMIANA: Szukamy div'ów z klasą .__tr, a nie znaczników <tr> ---
+    const tableRows = tableBody.querySelectorAll('.__tr');
+    
+    console.log(`[Blok ${index + 1}] Znaleziono ${tableRows.length} wierszy (.--tr) do filtrowania.`);
+
+    // Sprawdzenie, czy wszystkie elementy formularza istnieją
+    if (!dzialkaOd || !dzialkaDo || !resetButton) {
+        console.log(`[Blok ${index + 1}] Pominięto - brak jednego z kluczowych elementów filtrujących (input/button).`);
+        return;
+    }
 
     function filterTable() {
       console.log(`--- Uruchomiono filtrowanie w Bloku ${index + 1} ---`);
@@ -45,9 +54,9 @@ function initializeInfoBlockFilters() {
         const dzialkaMatch = rowDzialka >= dzialkaOdVal && rowDzialka <= dzialkaDoVal;
         const statusMatch = selectedStatuses.length === 0 || selectedStatuses.includes(rowStatus);
         
-        // Logika wyświetlania
         if (dzialkaMatch && statusMatch) {
-          row.style.display = '';
+          // --- ZMIANA: Przywracamy styl 'grid', który jest używany w CSS ---
+          row.style.display = 'grid';
         } else {
           row.style.display = 'none';
         }
@@ -69,13 +78,16 @@ function initializeInfoBlockFilters() {
         }
     });
     filterContainer.addEventListener('input', event => {
-        if (event.target.matches('input[placeholder="od"]') || event.target.matches('input[placeholder="do"]')) {
+        if (event.target.id === 'filter-dzialka-od' || event.target.id === 'filter-dzialka-do') {
             filterTable();
         }
     });
     if (resetButton) {
         resetButton.addEventListener('click', resetFilters);
     }
+
+    // Inicjalne filtrowanie
+    filterTable();
   });
 }
 
@@ -86,6 +98,7 @@ if (document.readyState === 'loading') {
   initializeInfoBlockFilters();
 }
 
+// Wsparcie dla edytora ACF
 if (window.acf) {
   window.acf.addAction('render_block_preview', initializeInfoBlockFilters);
 }
