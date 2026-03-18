@@ -1,5 +1,5 @@
 function initializeInfoBlockFilters() {
-  console.log('--- Inicjalizacja filtrów ---');
+  console.log('--- Inicjalizacja filtróws ---');
   const infoBlocks = document.querySelectorAll('.b-info');
   
   if (infoBlocks.length === 0) {
