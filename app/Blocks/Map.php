@@ -40,6 +40,7 @@ class Map extends Block
 			/*--- TAB #1 ---*/
 			->addTab('Elementy', ['placement' => 'top'])
 			->addGroup('g_map', ['label' => ''])
+			->addText('title', ['label' => 'Tytuł'])
 			->addText('header', ['label' => 'Nagłówek'])
 			->addWysiwyg('txt', [
 				'label' => 'Treść',
@@ -47,30 +48,11 @@ class Map extends Block
 				'toolbar' => 'full', // 'basic', 'full'
 				'media_upload' => true,
 			])
-			->endGroup()
 
-			/*--- TAB #2 ---*/
-			->addTab('Kafelki', ['placement' => 'top'])
-			->addRepeater('r_map', [
-				'label' => 'Oddziały',
-				'layout' => 'table', // 'row', 'block', albo 'table'
-				'min' => 1,
-				'button_label' => 'Dodaj oddział'
-			])
-			->addText('header', [
-				'label' => 'Oddział',
-			])
-			->addText('phone', ['label' => 'Telefon'])
-			->addText('email', ['label' => 'Email'])
-			->addTextarea('address', [
-				'label' => 'Adres',
-				'rows' => 2,
-				'new_lines' => 'br',
-			])
 			->addTextarea('code', [
 				'label' => 'Kod mapy',
 			])
-			->endRepeater()
+			->endGroup()
 
 			/*--- USTAWIENIA BLOKU ---*/
 
@@ -128,7 +110,6 @@ class Map extends Block
 	{
 		return [
 			'g_map' => get_field('g_map'),
-			'r_map' => get_field('r_map'),
 			'section_id' => get_field('section_id'),
 			'section_class' => get_field('section_class'),
 			'flip' => get_field('flip'),

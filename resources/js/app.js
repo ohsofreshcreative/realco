@@ -19,6 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.querySelector('.b-places')) import('./blocks/places');
   if (document.querySelector('.b-tabs')) import('./blocks/tabs');
   if (document.querySelector('.b-about')) import('./blocks/about');
+  if (document.querySelector('.b-hero')) import('./blocks/hero');
+  if (document.querySelector('.b-values')) import('./blocks/values');
+  if (document.querySelector('.b-gallery')) import('./blocks/gallery');
+  if (document.querySelector('.b-info')) import('./blocks/info');
 });
 
 /*--- NOT USED ---*/
@@ -154,3 +158,6 @@ document.addEventListener('DOMContentLoaded', function () {
     },
   });
 });
+
+
+

@@ -5,11 +5,11 @@ namespace App\Blocks;
 use Log1x\AcfComposer\Block;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
-class Content extends Block
+class Info extends Block
 {
-	public $name = 'Tekst oraz zdjęcie';
-	public $description = 'content';
-	public $slug = 'content';
+	public $name = 'Informacje o domach';
+	public $description = 'info';
+	public $slug = 'info';
 	public $category = 'formatting';
 	public $icon = 'align-pull-left';
 	public $keywords = ['tresc', 'zdjecie'];
@@ -24,32 +24,28 @@ class Content extends Block
 
 	public function fields()
 	{
-		$content = new FieldsBuilder('content');
+		$info = new FieldsBuilder('info');
 
-		$content
-			->setLocation('block', '==', 'acf/content') // ważne!
+		$info
+			->setLocation('block', '==', 'acf/info') // ważne!
 			->addText('block-title', [
 				'label' => 'Tytuł',
 				'required' => 0,
 			])
 			->addAccordion('accordion1', [
-				'label' => 'Tekst oraz zdjęcie',
+				'label' => 'Informacje o domach',
 				'open' => false,
 				'multi_expand' => true,
 			])
 			/*--- GROUP ---*/
 			->addTab('Elementy', ['placement' => 'top'])
-			->addGroup('g_content', ['label' => ''])
+			->addGroup('g_info', ['label' => ''])
 			->addImage('image', [
 				'label' => 'Obraz',
 				'return_format' => 'array',
 				'preview_size' => 'thumbnail',
 			])
-			->addImage('logo', [
-				'label' => 'Logo',
-				'return_format' => 'array',
-				'preview_size' => 'thumbnail',
-			])
+			->addText('title', ['label' => 'Tytuł'])
 			->addText('header', ['label' => 'Nagłówek'])
 			->addWysiwyg('txt', [
 				'label' => 'Treść',
@@ -67,6 +63,64 @@ class Content extends Block
 				'preview_size' => 'thumbnail',
 			])
 			->endGroup()
+
+			/*--- TAB #2 ---*/
+			->addTab('Oferta', ['placement' => 'top'])
+		->addRepeater('r_info', [
+    'label' => 'Oferta',
+    'button_label' => 'Dodaj ofertę',
+    'layout' => 'table' // 'table' lub 'block' layout jest zazwyczaj lepszy dla pól z różną szerokością
+])
+    ->addText('dom', [
+        'label' => 'Dom',
+        'wrapper' => [
+            'width' => '10', // Ustawiasz szerokość w procentach
+        ],
+    ])
+    ->addFile('prospekt', [
+        'label' => 'Prospekt',
+        'return_format' => 'array',
+        'wrapper' => [
+            'width' => '15', // Możesz to zrobić dla każdego pola
+        ],
+    ])
+    ->addText('cena', [
+        'label' => 'Cena',
+        'wrapper' => [
+            'width' => '15',
+        ],
+    ])
+    ->addText('metraz', [
+        'label' => 'Metraż',
+        'wrapper' => [
+            'width' => '15',
+        ],
+    ])
+    ->addText('dzialka', [
+        'label' => 'Działka',
+        'wrapper' => [
+            'width' => '15',
+        ],
+    ])
+    ->addSelect('status', [
+        'label' => 'Wybierz opcję',
+        'choices' => ['a' => 'Dostępny', 'b' => 'Zarezerwowany', 'c' => 'Sprzedany'],
+        'default_value' => 'a',
+        'allow_null' => 0,
+        'multiple' => 0,
+        'ui' => 1,
+        'wrapper' => [
+            'width' => '15',
+        ],
+    ])
+    ->addFile('karta', [
+        'label' => 'Karta',
+        'return_format' => 'array',
+        'wrapper' => [
+            'width' => '15',
+        ],
+    ])
+->endRepeater()
 
 			/*--- USTAWIENIA BLOKU ---*/
 
@@ -123,13 +177,14 @@ class Content extends Block
 				'allow_null' => 0,
 			]);
 
-		return $content;
+		return $info;
 	}
 
 	public function with()
 	{
 		return [
-			'g_content' => get_field('g_content'),
+			'g_info' => get_field('g_info'),
+			'r_info' => get_field('r_info'),
 			'section_id' => get_field('section_id'),
 			'section_class' => get_field('section_class'),
 			'nolist' => get_field('nolist'),

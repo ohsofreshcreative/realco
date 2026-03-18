@@ -43,3 +43,25 @@ $sectionClass .= $nomt ? ' !mt-0' : '';
 
 	</div>
 </section>
+
+<div class="c-main">
+	
+	<div class="flex flex-col md:flex-row gap-8 mt-16">
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-center gap-8">
+			<img style="width:200px;" src="/wp-content/uploads/2026/01/realco.png">
+	
+			<p>ul. Zielna 37, Budynek C, Piętro IV<br> 00-108 Warszawa</p>
+	
+			<p>+ 48 22 395 75 54 <br> biuro@realco.pl</p>
+	
+			<div class="flex gap-4">
+				<img style="width:32px;" src="/wp-content/uploads/2026/01/fb.svg">
+				<img style="width:32px;" src="/wp-content/uploads/2026/01/ig.svg">
+			</div>
+		</div>
+	
+		<img style="width:200px;" src="/wp-content/uploads/2026/03/image-1.png">
+	</div>
+	
+	<p class="text-sm text-gray-400 mt-10">Całość treści prezentowanej na stronie internetowej stanowi własność Realco Property Investment and Development sp. z o.o. i jest chroniona jako utwór w rozumieniu ustawy z dnia 4 lutego 1994 r. o prawie autorskim i prawach pokrewnych (Dz.U. z 2022 r. poz. 2509). Jakiekolwiek rozpowszechnianie, kopiowanie lub wykorzystywanie jej części w jakiejkolwiek formie jest zabronione bez uprzedniej pisemnej zgody Realco Property Investment and Development sp. z o.o. Wszystkie wizualizacje przedstawione na stronie mają charakter poglądowy i nie stanowią oferty handlowej w rozumieniu art. 66 § 1 Kodeksu cywilnego oraz innych obowiązujących przepisów prawnych. Realco Property Investment and Development sp. z o.o. zastrzega sobie prawo do wprowadzania zmian w wizualizacjach przedstawionych na stronie.</p>
+</div>

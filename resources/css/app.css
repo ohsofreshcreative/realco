@@ -12,7 +12,8 @@
 /* Twoje “źródłowe” zmienne RGB */
 :root {
   /* base */
-  --body: 14 32 31; /* #0E201F */
+  --body: 85 72 56; /* #554838 */
+  --text-body: 85 72 56; /* #554838 */
 
 --primary: 0 97 80;/* #006150 (BASE) */
 --p-hover: 0 81 67;/* #005143 (60%) */
@@ -63,9 +64,9 @@
   /* neutrals / fixed backgrounds */
   --gray: #2a3f50;
   --bg: #FFF;
-  --bg-light: #F7EEE5;
-  --bg-lighter: #E9F8F3;
-  --bg-brand: #002704;
+  --bg-light: #FBF8F4;
+  --bg-lighter: #F5EDE3;
+  --bg-brand: #EBDBC8;
   --bg-dark: #071622;
 }
 
@@ -149,6 +150,8 @@
 @import '../css/blocks/hero.scss';
 @import '../css/blocks/image.scss';
 @import '../css/blocks/about.scss';
+@import '../css/blocks/gallery.scss';
+@import '../css/blocks/info.scss';
 
 /*-- NOT USED --*/
 @import '../css/blocks/help.scss';

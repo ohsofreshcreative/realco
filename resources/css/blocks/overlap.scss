@@ -1,2 +1,7 @@
 .b-overlap {
+	.gsap__cards:nth-child(even) {
+		.__box {
+			margin-left:auto;
+		}
+	}
 }

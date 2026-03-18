@@ -37,7 +37,7 @@ class Hero extends Block
 			])
 			/*--- TAB #1 ---*/
 			->addTab('Treść', ['placement' => 'top'])
-			->addGroup('g_hero', ['label' => 'Hero'])
+			->addRepeater('r_hero', ['label' => 'Hero'])
 			->addImage('image', [
 				'label' => 'Obraz',
 				'return_format' => 'array',
@@ -58,7 +58,7 @@ class Hero extends Block
 				'label' => 'Przycisk #2',
 				'return_format' => 'array',
 			])
-			->endGroup()
+			->endRepeater()
 
 			/*--- USTAWIENIA BLOKU ---*/
 
@@ -68,7 +68,7 @@ class Hero extends Block
 			])
 			->addText('section_class', [
 				'label' => 'Dodatkowe klasy CSS',
-			])
+			]) 
 			->addTrueFalse('nomt', [
 				'label' => 'Usunięcie marginesu górnego',
 				'ui' => 1,
@@ -82,7 +82,7 @@ class Hero extends Block
 	public function with()
 	{
 		return [
-			'g_hero' => get_field('g_hero'),
+			'r_hero' => get_field('r_hero'),
 			'section_id' => get_field('section_id'),
 			'section_class' => get_field('section_class'),
 			'nomt' => get_field('nomt'),

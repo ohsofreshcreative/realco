@@ -4,47 +4,57 @@ $sectionClass .= $nomt ? ' !mt-0' : '';
 @endphp
 
 <!-- hero --->
-
 <section
 	data-gsap-anim="section"
 	@if(!empty($section_id)) id="{{ $section_id }}" @endif
-	class="b-hero bg-third section-wrapper radius relative overflow-hidden {{ $sectionClass }} {{ $section_class }}">
+	class="b-hero relative overflow-hidden h-[calc(100vh-104px)] md:h-full {{ $sectionClass }} {{ $section_class }}">
 
-	<div class="__wrapper c-main grid grid-cols-1 lg:grid-cols-2 gap-8 items-center relative z-20 py-10">
-		<div class="__content relative z-20 py-0 md:py-30 order-2 lg:order-1">
+	<!-- Swiper -->
+	<div class="swiper hero-slider h-full">
+		<div class="swiper-wrapper">
+			@foreach ($r_hero as $slide)
+			<div class="swiper-slide">
+				<div class="__wrapper grid items-center relative z-20 py-10 h-full">
+					<div class="__content c-main mx-auto relative z-20 py-0 md:py-30 order-2 lg:order-1">
+						<div class="w-full md:w-1/2 lg:w-2/3">
+							<img data-gsap-element="img" src="/wp-content/uploads/2026/03/logo-white.svg" />
+							<h1 data-gsap-element="header" class="m-header text-white mt-2">
+								{{ $slide['title'] }}
+							</h1>
+							<div data-gsap-element="txt" class="">
+								{!! $slide['txt'] !!}
+							</div>
+							@if (!empty($slide['button1']))
+							<div class="inline-buttons m-btn">
+								<a data-gsap-element="button" class="main-btn left-btn"
+									href="{{ $slide['button1']['url'] }}"
+									target="{{ $slide['button1']['target'] }}">
+									{{ $slide['button1']['title'] }}
+								</a>
+								@if (!empty($slide['button2']))
+								<a data-gsap-element="button" class="second-btn"
+									href="{{ $slide['button2']['url'] }}"
+									target="{{ $slide['button2']['target'] }}">
+									{{ $slide['button2']['title'] }}
+								</a>
+								@endif
+							</div>
+							@endif
 
-			<h1 data-gsap-element="header" class="m-header">
-				{{ $g_hero['title'] }}
-			</h1>
-			<div data-gsap-element="txt" class="">
-				{!! $g_hero['txt'] !!}
+						</div>
+					</div>
+
+					@if ($slide['image'])
+					<div class="__img __bg absolute inset-0 w-full h-full order-1 lg:order-2">
+						<img class="object-cover w-full h-full" src="{{ $slide['image']['url'] }}" alt="{{ $slide['image']['alt'] ?? '' }}">
+					</div>
+					@endif
+				</div>
 			</div>
-			@if (!empty($g_hero['button1']))
-			<div class="inline-buttons m-btn">
-				<a data-gsap-element="button" class="main-btn left-btn"
-					href="{{ $g_hero['button1']['url'] }}"
-					target="{{ $g_hero['button1']['target'] }}">
-					{{ $g_hero['button1']['title'] }}
-				</a>
-				@if (!empty($g_hero['button2']))
-				<a data-gsap-element="button" class="second-btn"
-					href="{{ $g_hero['button2']['url'] }}"
-					target="{{ $g_hero['button2']['target'] }}">
-					{{ $g_hero['button2']['title'] }}
-				</a>
-				@endif
+			@endforeach
+			<div class="swiper-pagination-wrapper c-main absolute">
+				<div class="swiper-pagination"></div>
 			</div>
-			@endif
 		</div>
-
-		@if ($g_hero['image'])
-		<div class="__img relative radius-img overflow-hidden order-1 lg:order-2">
-			<img data-gsap-element="image" class="absolute mix-blend-overlay opacity-50 bottom-10 left-10 w-24 md:w-max z-20" src="/wp-content/uploads/2026/01/shape-2.svg" />
-			<img data-gsap-element="image" class="object-cover rounded-3xl md:rounded-[104] w-full h-[200px] sm:h-full" src="{{ $g_hero['image']['url'] }}" alt="{{ $g_hero['image']['alt'] ?? '' }}">
-		</div>
-		@endif
 	</div>
-
-	<img data-gsap-element="image" class="absolute opacity-20 -left-40 -top-10 md:-bottom-20" src="/wp-content/uploads/2026/01/shape.svg" />
-
 </section>

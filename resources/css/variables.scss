@@ -104,7 +104,7 @@ body {
 	--img-xs: 176px;
 	--img-s: 200px;
 	--img-m: 240px;
-	--img-md: 360px;
+	--img-md: 280px;
 	--img-l: 424px;
 	--img-xl: 496px;
 	--img-2xl: 560px;
@@ -254,28 +254,6 @@ body {
 .section-brand {
 	background: var(--color-background-brand);
 	padding: var(--smt) 0;
-
-	h1,
-	.text-h1,
-	h2,
-	.text-h2,
-	h3,
-	.text-h3,
-	h4,
-	.text-h4,
-	h5,
-	.text-h5,
-	h6,
-	.text-h6,
-	p,
-	b,
-	strong,
-	i,
-	ul,
-	ul li,
-	a {
-		color: #fff;
-	}
 }
 
 .section-primary {
@@ -441,9 +419,12 @@ a {
 	transition: all 0.2s ease-out;
 }
 
-.subtitle-p {
+.title-p {
 	display: block;
-	color: var(--color-primary) !important;
+	color: var(--color-secondary) !important;
+	font-family: var(--header);
+	font-weight: 600;
+	font-size:18px;
 }
 
 .subtitle-s {
@@ -536,6 +517,14 @@ h6,
 
 .bg-background {
 	background: var(--bg) !important;
+}
+
+.bg-light {
+	background: var(--bg-light) !important;
+}
+
+.bg-lighter {
+	background: var(--bg-lighter) !important;
 }
 
 .bg-gradient {

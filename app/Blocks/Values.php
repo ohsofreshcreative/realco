@@ -38,6 +38,7 @@ class Values extends Block
 			/*--- TAB #1 ---*/
 			->addTab('Treści', ['placement' => 'top'])
 			->addGroup('g_values', ['label' => ''])
+			->addText('title', ['label' => 'Tytuł'])
 			->addText('header', ['label' => 'Nagłówek'])
 			->addTextarea('text', [
 				'label' => 'Opis',

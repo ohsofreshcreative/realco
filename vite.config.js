@@ -9,19 +9,19 @@ import path from 'path'
 
 export default defineConfig(({ command }) => ({
   server: {
-    host: 'realcolp.local',
+    host: 'realco.local',
     port: 5981,
     strictPort: true,
     cors: true,
     hmr: {
       protocol: 'ws',
-      host: 'realcolp.local',
+      host: 'realco.local',
       port: 5981,
     },
   },
 
   base: command === 'build'
-    ? '/wp-content/themes/realcolp/public/build/'
+    ? '/wp-content/themes/realco/public/build/'
     : '/build/',
 
   plugins: [
