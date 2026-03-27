@@ -20,17 +20,17 @@ const valuesSlider = new Swiper('.values-slider', {
   breakpoints: {
     // when window width is >= 768px
     768: {
-      slidesPerView: 2,
+      slidesPerView: 2.7,
       spaceBetween: 32
     },
     // when window width is >= 1024px
     1024: {
-      slidesPerView: 3,
+      slidesPerView: 3.4,
       spaceBetween: 32
     },
     // when window width is >= 1280px
     1280: {
-        slidesPerView: 5,
+        slidesPerView: 3.9,
         spaceBetween: 32
     }
   }

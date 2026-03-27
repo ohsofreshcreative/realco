@@ -69,38 +69,34 @@ class Info extends Block
 		->addRepeater('r_info', [
     'label' => 'Oferta',
     'button_label' => 'Dodaj ofertę',
-    'layout' => 'table' // 'table' lub 'block' layout jest zazwyczaj lepszy dla pól z różną szerokością
+    'layout' => 'row' // 'table' lub 'block' layout jest zazwyczaj lepszy dla pól z różną szerokością
 ])
     ->addText('dom', [
         'label' => 'Dom',
-        'wrapper' => [
-            'width' => '10', // Ustawiasz szerokość w procentach
-        ],
     ])
     ->addFile('prospekt', [
         'label' => 'Prospekt',
         'return_format' => 'array',
-        'wrapper' => [
-            'width' => '15', // Możesz to zrobić dla każdego pola
-        ],
     ])
     ->addText('cena', [
         'label' => 'Cena',
-        'wrapper' => [
-            'width' => '15',
-        ],
     ])
     ->addText('metraz', [
         'label' => 'Metraż',
-        'wrapper' => [
-            'width' => '15',
-        ],
     ])
     ->addText('dzialka', [
         'label' => 'Działka',
-        'wrapper' => [
-            'width' => '15',
+    ])
+    ->addSelect('typ_domu', [
+        'label' => 'Typ domu',
+        'choices' => [
+            'waskie-blizniaki' => 'Wąskie bliźniaki',
+            'szerokie-blizniaki' => 'Szerokie bliźniaki',
+            'segmenty' => 'Segmenty',
+            'domy-jednorodzinne' => 'Domy jednorodzinne',
         ],
+        'default_value' => 'waskie-blizniaki',
+        'allow_null' => 1,
     ])
     ->addSelect('status', [
         'label' => 'Wybierz opcję',
@@ -109,16 +105,10 @@ class Info extends Block
         'allow_null' => 0,
         'multiple' => 0,
         'ui' => 1,
-        'wrapper' => [
-            'width' => '15',
-        ],
     ])
     ->addFile('karta', [
         'label' => 'Karta',
         'return_format' => 'array',
-        'wrapper' => [
-            'width' => '15',
-        ],
     ])
 ->endRepeater()
 
@@ -180,19 +170,45 @@ class Info extends Block
 		return $info;
 	}
 
-	public function with()
-	{
-		return [
-			'g_info' => get_field('g_info'),
-			'r_info' => get_field('r_info'),
-			'section_id' => get_field('section_id'),
-			'section_class' => get_field('section_class'),
-			'nolist' => get_field('nolist'),
-			'flip' => get_field('flip'),
-			'wide' => get_field('wide'),
-			'nomt' => get_field('nomt'),
-			'gap' => get_field('gap'),
-			'background' => get_field('background'),
-		];
-	}
+public function with()
+{
+    $r_info = get_field('r_info');
+    $fields_config = $this->fields()->build();
+    $typ_domu_choices = [];
+
+    // Znajdź definicję pola 'typ_domu' w repeaterze 'r_info'
+    foreach ($fields_config['fields'] as $field) {
+        if ($field['name'] === 'r_info') {
+            foreach ($field['sub_fields'] as $sub_field) {
+                if ($sub_field['name'] === 'typ_domu') {
+                    $typ_domu_choices = $sub_field['choices'];
+                    break 2;
+                }
+            }
+        }
+    }
+
+    if (is_array($r_info)) {
+        foreach ($r_info as $key => $row) {
+            if (!empty($row['typ_domu']) && isset($typ_domu_choices[$row['typ_domu']])) {
+                $r_info[$key]['typ_domu_label'] = $typ_domu_choices[$row['typ_domu']];
+            } else {
+                $r_info[$key]['typ_domu_label'] = ''; // Ustaw pustą etykietę, jeśli nie znaleziono
+            }
+        }
+    }
+
+    return [
+        'g_info' => get_field('g_info'),
+        'r_info' => $r_info,
+        'section_id' => get_field('section_id'),
+        'section_class' => get_field('section_class'),
+        'nolist' => get_field('nolist'),
+        'flip' => get_field('flip'),
+        'wide' => get_field('wide'),
+        'nomt' => get_field('nomt'),
+        'gap' => get_field('gap'),
+        'background' => get_field('background'),
+    ];
+}
 }

@@ -27,7 +27,7 @@ $sectionClass .= ' ' . $background;
 				@if (!empty($g_content['logo']))
 				<img data-gsap-element="logo" class="max-h-26" src="{{ $g_content['logo']['url'] }}" alt="{{ $g_content['logo']['alt'] ?? '' }}">
 				@endif
-				<h2 data-gsap-element="header" class="">{{ $g_content['header'] }}</h2>
+				<h2 data-gsap-element="header" class="m-header">{{ $g_content['header'] }}</h2>
 
 				<div data-gsap-element="txt" class="__txt mt-2">
 					{!! $g_content['txt'] !!}

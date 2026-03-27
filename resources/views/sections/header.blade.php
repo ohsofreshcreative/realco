@@ -34,7 +34,11 @@ use App\Walkers\MobileDropdownWalker;
 		</nav>
 		@endif
 
-
+	<div class="flex items-center gap-2">
+    {!! do_shortcode('[gt-link lang="pl" widget_look="flags"]') !!}
+    {!! do_shortcode('[gt-link lang="en" widget_look="flags"]') !!}
+    {!! do_shortcode('[gt-link lang="uk" widget_look="flags"]') !!}
+</div>
 		<!-- <a class="__menu-btn bg-primary !text-white font-semibold rounded-full whitespace-nowrap py-2 px-2 lg:px-3 ml-2" href="/kontakt">Skontaktuj się z nami</a> -->
 	</div>
 

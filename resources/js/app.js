@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.querySelector('.b-values')) import('./blocks/values');
   if (document.querySelector('.b-gallery')) import('./blocks/gallery');
   if (document.querySelector('.b-info')) import('./blocks/info');
+  if (document.querySelector('.b-architecture')) import('./blocks/architecture');
 });
 
 /*--- NOT USED ---*/

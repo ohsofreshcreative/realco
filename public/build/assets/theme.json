@@ -1539,6 +1539,16 @@
           "color": "rgb(var(--third))"
         },
         {
+          "name": "Third (300)",
+          "slug": "third-300",
+          "color": "rgb(var(--t-300))"
+        },
+        {
+          "name": "Third (400)",
+          "slug": "third-400",
+          "color": "rgb(var(--t-400))"
+        },
+        {
           "name": "Gray",
           "slug": "gray",
           "color": "var(--gray)"

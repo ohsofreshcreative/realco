@@ -1,7 +1,7 @@
 function initializeInfoBlockFilters() {
   console.log('--- Inicjalizacja filtrów ---');
   const infoBlocks = document.querySelectorAll('.b-info');
-  
+
   if (infoBlocks.length === 0) {
     console.log('Nie znaleziono żadnych bloków `.b-info`.');
     return;
@@ -17,45 +17,47 @@ function initializeInfoBlockFilters() {
       return;
     }
 
-    // Używamy ID, które są w HTML, dla pewności
+    // Pobieranie elementów filtrujących
     const dzialkaOd = filterContainer.querySelector('#filter-dzialka-od');
     const dzialkaDo = filterContainer.querySelector('#filter-dzialka-do');
     const statusCheckboxes = filterContainer.querySelectorAll('.filter-status-checkbox');
+    const typDomuCheckboxes = filterContainer.querySelectorAll('.filter-typ-domu-checkbox');
     const resetButton = filterContainer.querySelector('#filter-reset-button');
-    
-    // --- KLUCZOWA ZMIANA: Szukamy div'ów z klasą .__tr, a nie znaczników <tr> ---
     const tableRows = tableBody.querySelectorAll('.__tr');
-    
-    console.log(`[Blok ${index + 1}] Znaleziono ${tableRows.length} wierszy (.--tr) do filtrowania.`);
 
-    // Sprawdzenie, czy wszystkie elementy formularza istnieją
-    if (!dzialkaOd || !dzialkaDo || !resetButton) {
-        console.log(`[Blok ${index + 1}] Pominięto - brak jednego z kluczowych elementów filtrujących (input/button).`);
-        return;
+    if (!dzialkaOd || !dzialkaDo || !resetButton || tableRows.length === 0) {
+      console.log(`[Blok ${index + 1}] Pominięto - brak kluczowych elementów (input, button, rows).`);
+      return;
     }
 
     function filterTable() {
       console.log(`--- Uruchomiono filtrowanie w Bloku ${index + 1} ---`);
-      
+
       const dzialkaOdVal = parseFloat(dzialkaOd.value) || 0;
       const dzialkaDoVal = parseFloat(dzialkaDo.value) || Infinity;
-      
+
       const selectedStatuses = Array.from(statusCheckboxes)
+        .filter(checkbox => checkbox.checked)
+        .map(checkbox => checkbox.value);
+
+      const selectedTypyDomu = Array.from(typDomuCheckboxes)
         .filter(checkbox => checkbox.checked)
         .map(checkbox => checkbox.value);
 
       console.log('Zakres działki:', dzialkaOdVal, '-', dzialkaDoVal);
       console.log('Wybrane statusy:', selectedStatuses);
+      console.log('Wybrane typy domu:', selectedTypyDomu);
 
       tableRows.forEach(row => {
         const rowDzialka = parseFloat(row.dataset.dzialka) || 0;
         const rowStatus = row.dataset.status;
+        const rowTypDomu = row.dataset.typDomu;
 
         const dzialkaMatch = rowDzialka >= dzialkaOdVal && rowDzialka <= dzialkaDoVal;
         const statusMatch = selectedStatuses.length === 0 || selectedStatuses.includes(rowStatus);
-        
-        if (dzialkaMatch && statusMatch) {
-          // --- ZMIANA: Przywracamy styl 'grid', który jest używany w CSS ---
+        const typDomuMatch = selectedTypyDomu.length === 0 || selectedTypyDomu.includes(rowTypDomu);
+
+        if (dzialkaMatch && statusMatch && typDomuMatch) {
           row.style.display = 'grid';
         } else {
           row.style.display = 'none';
@@ -67,23 +69,17 @@ function initializeInfoBlockFilters() {
       dzialkaOd.value = '';
       dzialkaDo.value = '';
       statusCheckboxes.forEach(checkbox => checkbox.checked = false);
+      typDomuCheckboxes.forEach(checkbox => checkbox.checked = false);
       console.log('Filtry zresetowane.');
       filterTable();
     }
-    
-    // Zdarzenia
-    filterContainer.addEventListener('change', event => {
-        if (event.target.classList.contains('filter-status-checkbox')) {
-            filterTable();
-        }
-    });
-    filterContainer.addEventListener('input', event => {
-        if (event.target.id === 'filter-dzialka-od' || event.target.id === 'filter-dzialka-do') {
-            filterTable();
-        }
-    });
+
+    // --- GŁÓWNA ZMIANA: Uproszczone listenery zdarzeń ---
+    filterContainer.addEventListener('input', filterTable); // Dla pól tekstowych
+    filterContainer.addEventListener('change', filterTable); // Dla checkboxów
+
     if (resetButton) {
-        resetButton.addEventListener('click', resetFilters);
+      resetButton.addEventListener('click', resetFilters);
     }
 
     // Inicjalne filtrowanie

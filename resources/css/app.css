@@ -104,7 +104,7 @@
   --color-secondary-900: rgb(var(--s-900));
   --color-secondary-dark: rgb(var(--s-dark));
 
-  /* secondary */
+  /* third */
   --color-third: rgb(var(--third));
   --color-third-hover: rgb(var(--t-hover));
   --color-third-100: rgb(var(--t-100));
@@ -152,6 +152,7 @@
 @import '../css/blocks/about.scss';
 @import '../css/blocks/gallery.scss';
 @import '../css/blocks/info.scss';
+@import '../css/blocks/architecture.scss';
 
 /*-- NOT USED --*/
 @import '../css/blocks/help.scss';
