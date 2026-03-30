@@ -34,7 +34,9 @@ $sectionClass .= ' ' . $background;
 				</div>
 
 				@if (!empty($g_content['button']))
-				<a data-gsap-element="btn" class="second-btn m-btn align-self-bottom" href="{{ $g_content['button']['url'] }}">{{ $g_content['button']['title'] }}</a>
+				<x-button data-gsap-element="btn" class="second-btn m-btn align-self-bottom" :href="$g_content['button']['url']" :target="$g_content['button']['target'] ?? null">
+					{{ $g_content['button']['title'] }}
+				</x-button>
 				@endif
 
 			</div>

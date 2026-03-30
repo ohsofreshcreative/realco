@@ -1,7 +1,8 @@
 @props([
-    'href' => null,         // Jeśli podamy 'href', komponent stanie się linkiem <a>
-    'variant' => 'primary', // Domyślny wygląd to 'primary'
-    'tag' => null           // Opcjonalnie możemy wymusić bycie linkiem lub przyciskiem
+    'href' => null,
+    'variant' => 'primary',
+    'tag' => null,
+    'target' => null, // Dodajemy nową właściwość 'target'
 ])
 
 @php
@@ -14,11 +15,13 @@
 @endphp
 
 @if ($tag === 'a')
-    <a href="{{ $href }}" {{ $attributes->merge(['class' => $classes]) }}>
-        {{ $slot }} {{-- Tutaj trafi tekst przycisku --}}
+    <a href="{{ $href }}"
+        {{ $attributes->merge(['class' => $classes]) }}
+        @if ($target) target="{{ $target }}" @endif>
+        {{ $slot }}
     </a>
 @else
     <button {{ $attributes->merge(['class' => $classes]) }}>
-        {{ $slot }} {{-- Tutaj trafi tekst przycisku --}}
+        {{ $slot }}
     </button>
 @endif
