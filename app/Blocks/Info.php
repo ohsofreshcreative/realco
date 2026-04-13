@@ -90,12 +90,11 @@ class Info extends Block
     ->addSelect('typ_domu', [
         'label' => 'Typ domu',
         'choices' => [
-            'waskie-blizniaki' => 'Wąskie bliźniaki',
-            'szerokie-blizniaki' => 'Szerokie bliźniaki',
+            'dom-typu-blizniak' => 'Domy typu bliźniak',
             'segmenty' => 'Segmenty',
             'domy-jednorodzinne' => 'Domy jednorodzinne',
         ],
-        'default_value' => 'waskie-blizniaki',
+        'default_value' => 'dom-typu-blizniak',
         'allow_null' => 1,
     ])
     ->addSelect('status', [

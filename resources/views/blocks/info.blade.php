@@ -64,12 +64,8 @@ $sectionClass .= ' ' . $background;
 						<label class="block text-h6 mb-3">Typ domu</label>
 						<div class="flex flex-col gap-2">
 							<label class="flex items-center gap-2 cursor-pointer">
-								<input type="checkbox" value="waskie-blizniaki" class="filter-typ-domu-checkbox">
-								<span>Wąskie bliźniaki</span>
-							</label>
-							<label class="flex items-center gap-2 cursor-pointer">
 								<input type="checkbox" value="szerokie-blizniaki" class="filter-typ-domu-checkbox">
-								<span>Szerokie bliźniaki</span>
+								<span>Domy typu bliźniak</span>
 							</label>
 							<label class="flex items-center gap-2 cursor-pointer">
 								<input type="checkbox" value="segmenty" class="filter-typ-domu-checkbox">
