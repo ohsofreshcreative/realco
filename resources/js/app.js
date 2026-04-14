@@ -10,6 +10,12 @@ import.meta.glob(['../images/**', '../fonts/**']);
 import './menubar.js';
 import './footer-accordion.js';
 
+import baguetteBox from 'baguettebox.js';
+
+if (document.querySelector('.lightbox-gallery')) {
+  baguetteBox.run('.lightbox-gallery');
+}
+
 /*--- USED ---*/
 
 document.addEventListener('DOMContentLoaded', () => {
