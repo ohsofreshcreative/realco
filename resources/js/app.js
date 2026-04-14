@@ -17,45 +17,29 @@ window.Alpine = Alpine;
 Alpine.start();
 
 /*--- GŁÓWNY SKRYPT URUCHAMIANY PO ZAŁADOWANIU STRONY ---*/
-document.addEventListener('DOMContentLoaded', async () => {
-  // 1. Dynamiczne ładowanie skryptów dla bloków, które istnieją na stronie
-  const blockImports = [
-    { selector: '.b-help', path: './blocks/help' },
-    { selector: '.b-team', path: './blocks/team' },
-    { selector: '.b-reviews', path: './blocks/reviews' },
-    { selector: '.b-places', path: './blocks/places' },
-    { selector: '.b-tabs', path: './blocks/tabs' },
-    { selector: '.b-about', path: './blocks/about' },
-    { selector: '.b-hero', path: './blocks/hero' },
-    { selector: '.b-values', path: './blocks/values' },
-    { selector: '.b-gallery', path: './blocks/gallery' },
-    { selector: '.b-info', path: './blocks/info' },
-    { selector: '.b-architecture', path: './blocks/architecture' },
-  ];
+document.addEventListener('DOMContentLoaded', () => {
+  // Dynamiczne ładowanie skryptów dla bloków, które istnieją na stronie
+  if (document.querySelector('.b-help')) import('./blocks/help');
+  if (document.querySelector('.b-team')) import('./blocks/team');
+  if (document.querySelector('.b-reviews')) import('./blocks/reviews');
+  if (document.querySelector('.b-places')) import('./blocks/places');
+  if (document.querySelector('.b-tabs')) import('./blocks/tabs');
+  if (document.querySelector('.b-about')) import('./blocks/about');
+  if (document.querySelector('.b-hero')) import('./blocks/hero');
+  if (document.querySelector('.b-values')) import('./blocks/values');
+  if (document.querySelector('.b-gallery')) import('./blocks/gallery');
+  if (document.querySelector('.b-info')) import('./blocks/info'); // Ta linia załaduje nasz nowy plik
+  if (document.querySelector('.b-architecture')) import('./blocks/architecture');
 
-  const promises = blockImports
-    .filter(block => document.querySelector(block.selector))
-    .map(block => import(block.path));
-
-  // Czekamy, aż wszystkie dynamiczne skrypty się załadują
-  await Promise.all(promises);
-
-  // 2. Inicjalizacja baguetteBox.js (teraz mamy pewność, że DOM jest gotowy)
-  if (typeof baguetteBox !== 'undefined' && document.querySelector('.lightbox-gallery')) {
-    baguetteBox.run('.lightbox-gallery');
-  } else if (document.querySelector('.lightbox-gallery')) {
-    console.error('baguetteBox nie jest zdefiniowany. Sprawdź, czy skrypt jest poprawnie załadowany.');
-  }
-
-  // 3. Inicjalizacja animacji GSAP
+  // Inicjalizacja animacji GSAP
   if (typeof gsap === 'undefined') {
-    console.error('GSAP nie został załadowany globalnie. Sprawdź plik app/setup.php lub functions.php');
-    return; // Zakończ, jeśli GSAP nie istnieje
+    console.error('GSAP nie został załadowany globalnie.');
+    return;
   }
 
   gsap.registerPlugin(ScrollTrigger);
 
-  // Animacje dla elementów [data-gsap-anim='section']
+  // ... (reszta Twojego kodu GSAP pozostaje bez zmian)
   gsap.utils.toArray("[data-gsap-anim='section']").forEach((section) => {
     const standardImages = section.querySelectorAll("[data-gsap-element='img']");
     standardImages.forEach((img) => {
