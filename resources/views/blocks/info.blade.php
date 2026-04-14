@@ -36,26 +36,17 @@ $sectionClass .= ' ' . $background;
 				</div>
 
 				@if (!empty($g_info['typy_domow']))
-<div class="mt-8">
+<div class="mt-8 lightbox-gallery">
     <h5 class="text-xl font-bold mb-4">Dostępne typy domów:</h5>
     <div class="flex flex-col gap-4">
         @foreach ($g_info['typy_domow'] as $typ)
         <div class="flex items-center gap-4">
+            {{-- Obrazek otwierany w lightboxie --}}
             @if (!empty($typ['image']))
-            {{-- Zmieniamy <a> na <button> z akcją @click --}}
-            <button type="button" @click="openImageModal('{{ $typ['image']['url'] }}')">
-                <img src="{{ $typ['image']['sizes']['thumbnail'] }}" alt="{{ $typ['image']['alt'] ?? $typ['title'] }}" class="w-16 h-16 rounded-full object-cover border-2 border-white shadow-md cursor-pointer hover:opacity-80 transition-opacity">
-            </button>
+            <a href="{{ $typ['image']['url'] }}">
+                <img src="{{ $typ['image']['sizes']['thumbnail'] }}" alt="{{ $typ['image']['alt'] ?? $typ['title'] }}" class="w-16 h-16 rounded-full object-cover border-2 border-white shadow-md">
+            </a>
             @endif
-            
-            @if (!empty($typ['title']))
-            <span class="font-semibold">{{ $typ['title'] }}</span>
-            @endif
-        </div>
-        @endforeach
-    </div>
-</div>
-@endif
             
             {{-- Tytuł --}}
             @if (!empty($typ['title']))
@@ -260,56 +251,20 @@ $sectionClass .= ' ' . $background;
 <script>
     function infoBlock() {
         return {
-            // Istniejąca logika dla modala rezerwacji
             modalOpen: false,
             houseName: '',
             openModal(name) {
                 this.modalOpen = true;
                 this.houseName = name;
+                // Czekamy na wyrenderowanie modala przez Alpine
                 this.$nextTick(() => {
                     const hiddenInput = document.querySelector('#house-name');
                     if (hiddenInput) {
                         hiddenInput.value = this.houseName;
                     }
                 });
-            },
-
-            // NOWA LOGIKA DLA MODALA Z OBRAZKIEM
-            imageModalOpen: false,
-            imageModalSrc: '',
-            openImageModal(src) {
-                this.imageModalSrc = src;
-                this.imageModalOpen = true;
             }
         }
     }
 </script>
-<div 
-    x-show="imageModalOpen" 
-    @keydown.escape.window="imageModalOpen = false"
-    x-transition:enter="transition ease-out duration-300"
-    x-transition:enter-start="opacity-0"
-    x-transition:enter-end="opacity-100"
-    x-transition:leave="transition ease-in duration-200"
-    x-transition:leave-start="opacity-100"
-    x-transition:leave-end="opacity-0"
-    class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
-    style="display: none;">
-
-    {{-- Tło do kliknięcia, aby zamknąć --}}
-    <div @click="imageModalOpen = false" class="absolute inset-0"></div>
-
-    {{-- Kontener obrazka --}}
-    <div 
-        x-show="imageModalOpen"
-        x-transition:enter="transition ease-out duration-300"
-        x-transition:enter-start="opacity-0 scale-90"
-        x-transition:enter-end="opacity-100 scale-100"
-        class="relative bg-white p-2 rounded-lg shadow-xl max-w-4xl w-full">
-        <img :src="imageModalSrc" alt="Powiększony obraz" class="w-full h-auto max-h-[80vh] object-contain">
-    </div>
-
-    {{-- Przycisk zamykania --}}
-    <button @click="imageModalOpen = false" class="absolute top-4 right-4 text-white text-4xl font-bold hover:text-gray-300">&times;</button>
-</div>
 </section>
