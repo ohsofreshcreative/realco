@@ -27,9 +27,10 @@ gsap.registerPlugin(ScrollTrigger);
 
 /*--- GŁÓWNY SKRYPT URUCHAMIANY PO ZAŁADOWANIU STRONY ---*/
 document.addEventListener('DOMContentLoaded', function () {
-  console.log('DOM w pełni załadowany. Uruchamiam skrypty...');
+  console.log('--- START DIAGNOSTYKI LIGHTBOXA ---');
 
   // 1. Dynamiczne importy bloków
+  if (document.querySelector('.b-info')) import('./blocks/info');
   if (document.querySelector('.b-help')) import('./blocks/help');
   if (document.querySelector('.b-team')) import('./blocks/team');
   if (document.querySelector('.b-reviews')) import('./blocks/reviews');
@@ -39,20 +40,53 @@ document.addEventListener('DOMContentLoaded', function () {
   if (document.querySelector('.b-hero')) import('./blocks/hero');
   if (document.querySelector('.b-values')) import('./blocks/values');
   if (document.querySelector('.b-gallery')) import('./blocks/gallery');
-  if (document.querySelector('.b-info')) import('./blocks/info');
   if (document.querySelector('.b-architecture')) import('./blocks/architecture');
 
-  // 2. RĘCZNE ODŚWIEŻENIE FSLIGHTBOX
-  // Czekamy chwilę po załadowaniu bloków i zmuszamy fslightbox do ponownego przeskanowania strony.
+  // 2. Diagnostyka FsLightbox
   setTimeout(() => {
-    if (window.fslightbox && window.fslightbox.instances) {
-      for (const key in window.fslightbox.instances) {
-        window.fslightbox.instances[key].props.sources = [];
-        window.fslightbox.instances[key].handleReceivedSources();
-      }
-      console.log('FsLightbox odświeżony.');
+    console.log('[DIAGNOSTYKA] Uruchamiam po 500ms...');
+
+    // Sprawdzenie #1: Czy fslightbox jest w ogóle załadowany?
+    if (window.fslightbox) {
+      console.log('%c[OK] fslightbox jest załadowany i dostępny w `window`.', 'color: green');
+    } else {
+      console.error('%c[BŁĄD] fslightbox nie został znaleziony w `window`!', 'color: red');
+      return; // Kończymy, jeśli nie ma biblioteki
     }
-  }, 200); // 200ms opóźnienia dla pewności
+
+    // Sprawdzenie #2: Czy na stronie istnieją linki, które powinien obsłużyć lightbox?
+    const lightboxLinks = document.querySelectorAll('a[data-fslightbox]');
+    if (lightboxLinks.length > 0) {
+      console.log(`%c[OK] Znaleziono ${lightboxLinks.length} linków z atrybutem [data-fslightbox].`, 'color: green');
+      console.log('Oto one:', lightboxLinks);
+    } else {
+      console.warn('%c[UWAGA] Nie znaleziono żadnych linków z atrybutem [data-fslightbox] na stronie.', 'color: orange');
+    }
+
+    // Sprawdzenie #3: Próba ręcznego odświeżenia
+    try {
+      // Wersja dla PRO (może zadziałać, jeśli jest błąd w dokumentacji)
+      if (typeof window.fslightbox.refresh === 'function') {
+         window.fslightbox.refresh();
+         console.log('[DIAGNOSTYKA] Uruchomiono fslightbox.refresh() (wersja Pro).');
+      }
+      // Wersja dla FREE (obejście)
+      else if (window.fslightbox.instances) {
+        for (const key in window.fslightbox.instances) {
+          window.fslightbox.instances[key].props.sources = [];
+          window.fslightbox.instances[key].handleReceivedSources();
+        }
+        console.log('[DIAGNOSTYKA] Ręcznie odświeżono instancje fslightbox (wersja Free).');
+      } else {
+         console.warn('[DIAGNOSTYKA] Nie można było odświeżyć lightboxa - brak metody refresh() i obiektu instances.');
+      }
+    } catch (e) {
+      console.error('[BŁĄD] Wystąpił błąd podczas próby odświeżenia fslightbox:', e);
+    }
+    
+    console.log('--- KONIEC DIAGNOSTYKI LIGHTBOXA ---');
+
+  }, 500); // Zwiększone opóźnienie dla pewności
 
   // 3. Inicjalizacja GSAP
   if (typeof gsap === 'undefined') {
