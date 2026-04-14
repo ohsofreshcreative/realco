@@ -106,7 +106,7 @@ $sectionClass .= ' ' . $background;
 			{{-- 2. TABELA Z DANYMI --}}
 			<div class="__table-wrapper">
 				{{-- Nagłówki tabeli --}}
-				<div class="__thead hidden grid-cols-7 gap-4 px-4">
+				<div class="__thead hidden lg:grid grid-cols-7 gap-4 px-4">
 					<div class="__th text-h7 font-header">Dom</div>
 					<div class="__th text-h7 font-header">Cena</div>
 					<div class="__th text-h7 font-header">Metraż</div>
