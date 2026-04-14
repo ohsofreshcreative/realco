@@ -1,32 +1,10 @@
 /*--- GŁÓWNE IMPORTY ---*/
-// Importujemy tylko Alpine, resztę bibliotek (GSAP) ładujemy globalnie
-
 import Alpine from 'alpinejs';
-
-// Importy zasobów dla Vite (np. obrazy, fonty)
 import.meta.glob(['../images/**', '../fonts/**']);
-
-// Twoje niestandardowe moduły JS
 import './menubar.js';
 import './footer-accordion.js';
 
-/*--- USED ---*/
-
-document.addEventListener('DOMContentLoaded', () => {
-  if (document.querySelector('.b-help')) import('./blocks/help');
-  if (document.querySelector('.b-team')) import('./blocks/team');
-  if (document.querySelector('.b-reviews')) import('./blocks/reviews');
-  if (document.querySelector('.b-places')) import('./blocks/places');
-  if (document.querySelector('.b-tabs')) import('./blocks/tabs');
-  if (document.querySelector('.b-about')) import('./blocks/about');
-  if (document.querySelector('.b-hero')) import('./blocks/hero');
-  if (document.querySelector('.b-values')) import('./blocks/values');
-  if (document.querySelector('.b-gallery')) import('./blocks/gallery');
-  if (document.querySelector('.b-info')) import('./blocks/info');
-  if (document.querySelector('.b-architecture')) import('./blocks/architecture');
-});
-
-/*--- NOT USED ---*/
+/*--- NIEUŻYWANE (ale wciąż importowane) ---*/
 import './blocks/works.js';
 import './blocks/category-posts.js';
 import './blocks/how.js';
@@ -35,37 +13,51 @@ import './blocks/calc.js';
 import './blocks/category-slider.js';
 
 /*--- INICJALIZACJA BIBLIOTEK ---*/
-// Uruchom Alpine.js
 window.Alpine = Alpine;
 Alpine.start();
 
-/*--- SKRYPTY URUCHAMIANE PO ZAŁADOWANIU STRONY ---*/
+/*--- GŁÓWNY SKRYPT URUCHAMIANY PO ZAŁADOWANIU STRONY ---*/
+document.addEventListener('DOMContentLoaded', async () => {
+  // 1. Dynamiczne ładowanie skryptów dla bloków, które istnieją na stronie
+  const blockImports = [
+    { selector: '.b-help', path: './blocks/help' },
+    { selector: '.b-team', path: './blocks/team' },
+    { selector: '.b-reviews', path: './blocks/reviews' },
+    { selector: '.b-places', path: './blocks/places' },
+    { selector: '.b-tabs', path: './blocks/tabs' },
+    { selector: '.b-about', path: './blocks/about' },
+    { selector: '.b-hero', path: './blocks/hero' },
+    { selector: '.b-values', path: './blocks/values' },
+    { selector: '.b-gallery', path: './blocks/gallery' },
+    { selector: '.b-info', path: './blocks/info' },
+    { selector: '.b-architecture', path: './blocks/architecture' },
+  ];
 
- if (typeof baguetteBox !== 'undefined' && document.querySelector('.lightbox-gallery')) {
+  const promises = blockImports
+    .filter(block => document.querySelector(block.selector))
+    .map(block => import(block.path));
+
+  // Czekamy, aż wszystkie dynamiczne skrypty się załadują
+  await Promise.all(promises);
+
+  // 2. Inicjalizacja baguetteBox.js (teraz mamy pewność, że DOM jest gotowy)
+  if (typeof baguetteBox !== 'undefined' && document.querySelector('.lightbox-gallery')) {
     baguetteBox.run('.lightbox-gallery');
   } else if (document.querySelector('.lightbox-gallery')) {
     console.error('baguetteBox nie jest zdefiniowany. Sprawdź, czy skrypt jest poprawnie załadowany.');
   }
 
-document.addEventListener('DOMContentLoaded', function () {
-  // Inicjalizacja baguetteBox.js dla galerii
-  if (document.querySelector('.lightbox-gallery')) {
-    baguetteBox.run('.lightbox-gallery');
-  }
-
-  // Sprawdzenie, czy globalny GSAP istnieje. Jeśli nie, nic nie robimy, aby uniknąć błędów.
+  // 3. Inicjalizacja animacji GSAP
   if (typeof gsap === 'undefined') {
-    console.error(
-      'GSAP nie został załadowany globalnie. Sprawdź plik app/setup.php lub functions.php'
-    );
-    return;
+    console.error('GSAP nie został załadowany globalnie. Sprawdź plik app/setup.php lub functions.php');
+    return; // Zakończ, jeśli GSAP nie istnieje
   }
 
-  // --- TWOJE ISTNIEJĄCE ANIMACJE GSAP (TERAZ POWINNY DZIAŁAĆ) ---
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Animacje dla elementów [data-gsap-anim='section']
   gsap.utils.toArray("[data-gsap-anim='section']").forEach((section) => {
-    const standardImages = section.querySelectorAll(
-      "[data-gsap-element='img']"
-    );
+    const standardImages = section.querySelectorAll("[data-gsap-element='img']");
     standardImages.forEach((img) => {
       gsap.from(img, {
         opacity: 0,
@@ -82,9 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
 
-    const otherElements = section.querySelectorAll(
-      "[data-gsap-element]:not([data-gsap-element*='img']):not([data-gsap-element='stagger'])"
-    );
+    const otherElements = section.querySelectorAll("[data-gsap-element]:not([data-gsap-element*='img']):not([data-gsap-element='stagger'])");
     otherElements.forEach((element, index) => {
       gsap.from(element, {
         opacity: 0,
@@ -102,16 +92,12 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
 
-    const staggerElements = section.querySelectorAll(
-      "[data-gsap-element='stagger']"
-    );
+    const staggerElements = section.querySelectorAll("[data-gsap-element='stagger']");
     if (staggerElements.length > 0) {
       const sorted = [...staggerElements].sort((a, b) => {
         const getDelay = (el) => {
           const attr = el.getAttribute('data-gsap-edit');
-          return attr && attr.startsWith('delay-')
-            ? parseFloat(attr.replace('delay-', '')) || 0
-            : 0;
+          return attr && attr.startsWith('delay-') ? parseFloat(attr.replace('delay-', '')) || 0 : 0;
         };
         return getDelay(a) - getDelay(b);
       });
@@ -134,37 +120,25 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
   });
-});
 
-/*--- LINE ----*/
-
-gsap.registerPlugin(ScrollTrigger);
-
-document.addEventListener('DOMContentLoaded', function () {
+  // Animacja dla .animated-line
   const line = document.querySelector('.animated-line');
-  if (!line) return;
-
-  const length = line.getTotalLength();
-
-  gsap.set(line, {
-    strokeDasharray: length,
-    strokeDashoffset: length,
-  });
-
-  gsap.to(line, {
-    strokeDashoffset: 0,
-    duration: 0.5,
-    ease: 'power1.inOut',
-
-    scrollTrigger: {
-      trigger: line,
-      start: 'top 80%',
-      end: 'bottom 20%',
-      toggleActions: 'play none none none',
-      // markers: true,
-    },
-  });
+  if (line) {
+    const length = line.getTotalLength();
+    gsap.set(line, {
+      strokeDasharray: length,
+      strokeDashoffset: length,
+    });
+    gsap.to(line, {
+      strokeDashoffset: 0,
+      duration: 0.5,
+      ease: 'power1.inOut',
+      scrollTrigger: {
+        trigger: line,
+        start: 'top 80%',
+        end: 'bottom 20%',
+        toggleActions: 'play none none none',
+      },
+    });
+  }
 });
-
-
-
