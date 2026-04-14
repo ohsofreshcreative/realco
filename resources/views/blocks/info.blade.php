@@ -38,7 +38,7 @@ $sectionClass .= ' ' . $background;
 				@if (!empty($g_info['typy_domow']))
 <div class="mt-8">
     <h5 class="text-xl font-bold mb-4">Dostępne typy domów:</h5>
-    <div class="flex flex-col gap-4" data-fslightbox-gallery>
+    <div class="flex flex-col gap-4">
         @foreach ($g_info['typy_domow'] as $typ)
         <div class="flex items-center gap-4">
             {{-- Obrazek otwierany w lightboxie --}}
