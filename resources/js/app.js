@@ -2,6 +2,7 @@
 // Importujemy tylko Alpine, resztę bibliotek (GSAP) ładujemy globalnie
 
 import Alpine from 'alpinejs';
+import baguetteBox from 'baguettebox.js';
 
 // Importy zasobów dla Vite (np. obrazy, fonty)
 import.meta.glob(['../images/**', '../fonts/**']);
@@ -9,12 +10,6 @@ import.meta.glob(['../images/**', '../fonts/**']);
 // Twoje niestandardowe moduły JS
 import './menubar.js';
 import './footer-accordion.js';
-
-import baguetteBox from 'baguettebox.js';
-
-if (document.querySelector('.lightbox-gallery')) {
-  baguetteBox.run('.lightbox-gallery');
-}
 
 /*--- USED ---*/
 
