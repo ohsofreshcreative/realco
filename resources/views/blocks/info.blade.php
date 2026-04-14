@@ -46,7 +46,7 @@ $sectionClass .= ' ' . $background;
             <a href="{{ $typ['image']['url'] }}" data-fslightbox="gallery-{{ $unique_id }}" data-caption="{{ $typ['title'] }}" class="relative group lightbox-thumbnail">
                 <img src="{{ $typ['image']['sizes']['thumbnail'] }}" alt="{{ $typ['image']['alt'] ?? $typ['title'] }}" class="w-16 h-16 rounded-full object-cover border-2 border-white shadow-md transition-all duration-300">
                 {{-- Ikona lupy --}}
-                <img src="/wp-content/uploads/2026/04/zoom.svg" alt="Powiększ" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 pointer-events-none transition-opacity duration-300 opacity-0 group-hover:opacity-100">
+                <img src="/wp-content/uploads/2026/04/zoom.svg" alt="Powiększ" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 pointer-events-none">
             </a>
             @endif
             
