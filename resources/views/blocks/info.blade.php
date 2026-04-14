@@ -60,7 +60,7 @@ $sectionClass .= ' ' . $background;
 					</div>
 
 					{{-- Filtr: Typ domu (jako checkboxy) --}}
-					<div>
+					<!-- <div>
 						<label class="block text-h6 mb-3">Typ domu</label>
 						<div class="flex flex-col gap-2">
 							<label class="flex items-center gap-2 cursor-pointer">
@@ -76,12 +76,12 @@ $sectionClass .= ' ' . $background;
 								<span>Domy jednorodzinne</span>
 							</label>
 						</div>
-					</div>
+					</div> -->
 
 					{{-- Filtr: Status (jako checkboxy) --}}
 					<div>
 						<label class="block text-h6 mb-3">Status</label>
-						<div class="flex flex-col gap-2">
+						<div class="flex flex-col md:flex-row gap-2">
 							<label class="flex items-center gap-2 cursor-pointer">
 								<input type="checkbox" value="a" class="filter-status-checkbox">
 								<span>Dostępny</span>
@@ -98,7 +98,7 @@ $sectionClass .= ' ' . $background;
 					</div>
 				</div>
 				{{-- Przycisk resetowania --}}
-				<div class="mt-4">
+				<div class="mt-0">
 					<button type="button" id="filter-reset-button" class="reset-button">Wyczyść filtry</button>
 				</div>
 			</div>
@@ -106,12 +106,12 @@ $sectionClass .= ' ' . $background;
 			{{-- 2. TABELA Z DANYMI --}}
 			<div class="__table-wrapper">
 				{{-- Nagłówki tabeli --}}
-				<div class="__thead hidden lg:grid grid-cols-8 gap-4 px-4">
+				<div class="__thead hidden lg:grid grid-cols-7 gap-4 px-4">
 					<div class="__th text-h7 font-header">Dom</div>
 					<div class="__th text-h7 font-header">Cena</div>
 					<div class="__th text-h7 font-header">Metraż</div>
-					<div class.__th text-h7 font-header">Działka</div>
-					<div class="__th text-h7 font-header">Typ domu</div>
+					<div class="__th text-h7 font-header">Działka</div>
+					<!-- <div class="__th text-h7 font-header">Typ domu</div> -->
 					<div class="__th text-h7 font-header">Status</div>
 					<div class="__th text-h7 font-header">Karta</div>
 					<div class="__th text-h7 font-header">Kontakt</div>
@@ -128,7 +128,7 @@ $sectionClass .= ' ' . $background;
 							<div class="flex flex-col">
 								<span>{{ $row['dom'] }}</span>
 								@if (!empty($row['prospekt']))
-								<a href="{{ $row['prospekt']['url'] }}" target="_blank" class="table-link">Prospekt</a>
+								<a href="{{ $row['prospekt']['url'] }}" target="_blank" class="table-link !text-underline">Prospekt</a>
 								@endif
 							</div>
 						</div>
@@ -148,7 +148,7 @@ $sectionClass .= ' ' . $background;
 						</div>
 						<div class="__td" data-label="Metraż">{{ $row['metraz'] }}</div>
 						<div class="__td" data-label="Działka">{{ $row['dzialka'] }}</div>
-						<div class="__td" data-label="Typ domu">{{ $row['typ_domu_label'] }}</div>
+					<!-- 	<div class="__td" data-label="Typ domu">{{ $row['typ_domu_label'] }}</div> -->
 						<div class="__td" data-label="Status">
 							<div class="flex items-center gap-2">
 								<span class="status-label status-{{ $row['status'] }}">{{ $row['status'] == 'a' ? 'Dostępny' : ($row['status'] == 'b' ? 'Zarezerwowany' : 'Sprzedany') }}</span>
