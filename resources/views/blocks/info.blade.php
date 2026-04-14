@@ -26,7 +26,7 @@ $sectionClass .= ' ' . $background;
 		<div class="__col grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-20 mt-8">
 			@if (!empty($g_info['image']))
 			<div data-gsap-element="img" class="__img h-full order1">
-				<img class="object-cover w-full img-md aspect-auto lg:aspect-square radius-img" src="{{ $g_info['image']['url'] }}" alt="{{ $g_info['image']['alt'] ?? '' }}">
+				<img class="object-cover w-full w-full radius-img" src="{{ $g_info['image']['url'] }}" alt="{{ $g_info['image']['alt'] ?? '' }}">
 			</div>
 			@endif
 
