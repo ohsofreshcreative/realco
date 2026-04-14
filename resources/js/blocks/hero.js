@@ -9,6 +9,9 @@ document.querySelectorAll('.hero-slider').forEach((slider) => {
     slidesPerView: 1,
     spaceBetween: 0,
     loop: true,
+	autoplay: {
+	  delay: 5000,
+	},
     pagination: {
       el: slider.querySelector('.swiper-pagination'),
       clickable: true,
