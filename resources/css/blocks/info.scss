@@ -119,6 +119,11 @@
         }
     }
     .__table-wrapper {
+		.table-link {
+			a {
+				text-decoration: underline !important;
+			}
+		}
         .__thead {
             .__th {
                 padding: 16px 0;
