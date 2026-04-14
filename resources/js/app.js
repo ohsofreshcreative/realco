@@ -41,6 +41,12 @@ Alpine.start();
 
 /*--- SKRYPTY URUCHAMIANE PO ZAŁADOWANIU STRONY ---*/
 
+ if (typeof baguetteBox !== 'undefined' && document.querySelector('.lightbox-gallery')) {
+    baguetteBox.run('.lightbox-gallery');
+  } else if (document.querySelector('.lightbox-gallery')) {
+    console.error('baguetteBox nie jest zdefiniowany. Sprawdź, czy skrypt jest poprawnie załadowany.');
+  }
+
 document.addEventListener('DOMContentLoaded', function () {
   // Inicjalizacja baguetteBox.js dla galerii
   if (document.querySelector('.lightbox-gallery')) {
