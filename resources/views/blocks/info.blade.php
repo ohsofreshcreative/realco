@@ -136,8 +136,8 @@ $sectionClass .= ' ' . $background;
 							{{ $row['cena'] }}
 							@if (!empty($row['cena']) && !empty($row['metraz']))
 							@php
-							$numeric_cena = (float) str_replace(',', '.', preg_replace('/[^\d,.]/', 'zł', $row['cena']));
-							$numeric_metraz = (float) str_replace(',', '.', preg_replace('/[^\d,.]/', '', $row['metraz'])); 
+							$numeric_cena = (float) str_replace(',', '.', preg_replace('/[^\d,.]/', '', $row['cena']));
+							$numeric_metraz = (float) str_replace(',', '.', preg_replace('/[^\d,.]/', '', $row['metraz']));
 							@endphp
 							@if ($numeric_metraz > 0)
 							<span class="block text-sm text-gray-500">
@@ -145,7 +145,6 @@ $sectionClass .= ' ' . $background;
 							</span>
 							@endif
 							@endif
-							
 						</div>
 						<div class="__td" data-label="Metraż">{{ $row['metraz'] }}  m²</div>
 						<div class="__td" data-label="Działka">{{ $row['dzialka'] }}  m²</div>
