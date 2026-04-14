@@ -588,16 +588,3 @@ add_action('wp_footer', function () {
 
   return $components;
 }, 10, 3);
-
-
-add_action('wp_enqueue_scripts', function () {
-    // ... (tutaj prawdopodobnie jest już kod ładujący app.css i app.js)
-
-    // Dodajemy skrypty i style dla baguetteBox.js z CDN
-    // Sprawdzamy, czy na stronie istnieje galeria, aby nie ładować niepotrzebnie skryptów
-    global $post;
-    if (is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'gallery') || strpos($post->post_content, 'lightbox-gallery') !== false) {
-        wp_enqueue_style('baguettebox-css', 'https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.css', [], '1.11.1');
-        wp_enqueue_script('baguettebox-js', 'https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.js', [], '1.11.1', true);
-    }
-}, 100);
