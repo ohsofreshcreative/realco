@@ -1,14 +1,21 @@
 {
+  "_create-element-if-not-defined-Ez84G5OH.js": {
+    "file": "assets/create-element-if-not-defined-Ez84G5OH.js",
+    "name": "create-element-if-not-defined",
+    "imports": [
+      "_swiper-F5DH01ul.js"
+    ]
+  },
   "_navigation-_Ms0R5o1.css": {
     "file": "assets/navigation-_Ms0R5o1.css",
     "src": "_navigation-_Ms0R5o1.css"
   },
-  "_pagination-DWGMTTVh.js": {
-    "file": "assets/pagination-DWGMTTVh.js",
+  "_pagination-Bt5fgrpW.js": {
+    "file": "assets/pagination-Bt5fgrpW.js",
     "name": "pagination",
     "imports": [
-      "resources/js/app.js",
-      "_swiper-IH7kTFbR.js"
+      "_create-element-if-not-defined-Ez84G5OH.js",
+      "_swiper-F5DH01ul.js"
     ],
     "css": [
       "assets/pagination-ZQCciRw_.css"
@@ -18,20 +25,20 @@
     "file": "assets/pagination-ZQCciRw_.css",
     "src": "_pagination-ZQCciRw_.css"
   },
+  "_swiper-F5DH01ul.js": {
+    "file": "assets/swiper-F5DH01ul.js",
+    "name": "swiper"
+  },
   "_swiper-HzbfsHSZ.css": {
     "file": "assets/swiper-HzbfsHSZ.css",
     "src": "_swiper-HzbfsHSZ.css"
-  },
-  "_swiper-IH7kTFbR.js": {
-    "file": "assets/swiper-IH7kTFbR.js",
-    "name": "swiper"
   },
   "editor.deps.json": {
     "file": "assets/editor.deps-DxpY22xl.json",
     "src": "editor.deps.json"
   },
   "resources/css/app.css": {
-    "file": "assets/app-CE0Z2BB4.css",
+    "file": "assets/app-CL-h6ts8.css",
     "name": "app",
     "names": [
       "app.css"
@@ -40,7 +47,7 @@
     "isEntry": true
   },
   "resources/css/editor.css": {
-    "file": "assets/editor-DYrMDyH_.css",
+    "file": "assets/editor-Dp_uEl2F.css",
     "name": "editor",
     "names": [
       "editor.css"
@@ -49,12 +56,13 @@
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-dIIqpQXz.js",
+    "file": "assets/app-BEN7FpmH.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "imports": [
-      "_swiper-IH7kTFbR.js"
+      "_create-element-if-not-defined-Ez84G5OH.js",
+      "_swiper-F5DH01ul.js"
     ],
     "dynamicImports": [
       "resources/js/blocks/help.js",
@@ -71,41 +79,41 @@
     ]
   },
   "resources/js/blocks/about.js": {
-    "file": "assets/about-CnL3EGwr.js",
+    "file": "assets/about-Bq7HxkWW.js",
     "name": "about",
     "src": "resources/js/blocks/about.js",
     "isDynamicEntry": true
   },
   "resources/js/blocks/architecture.js": {
-    "file": "assets/architecture-BvPlG9Bd.js",
+    "file": "assets/architecture-z0Lc_3F9.js",
     "name": "architecture",
     "src": "resources/js/blocks/architecture.js",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_swiper-IH7kTFbR.js"
+      "_swiper-F5DH01ul.js"
     ]
   },
   "resources/js/blocks/gallery.js": {
-    "file": "assets/gallery-DUTWS5Pz.js",
+    "file": "assets/gallery-CbZ5sP2a.js",
     "name": "gallery",
     "src": "resources/js/blocks/gallery.js",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_pagination-DWGMTTVh.js",
-      "_swiper-IH7kTFbR.js"
+      "_pagination-Bt5fgrpW.js",
+      "_swiper-F5DH01ul.js"
     ]
   },
   "resources/js/blocks/help.js": {
-    "file": "assets/help-DfXZsjv3.js",
+    "file": "assets/help-B0yzS8PN.js",
     "name": "help",
     "src": "resources/js/blocks/help.js",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_pagination-DWGMTTVh.js",
-      "_swiper-IH7kTFbR.js"
+      "_pagination-Bt5fgrpW.js",
+      "_swiper-F5DH01ul.js"
     ],
     "css": [
       "assets/help-DB3K95Vy.css",
@@ -114,44 +122,43 @@
     ]
   },
   "resources/js/blocks/hero.js": {
-    "file": "assets/hero-CZsYYKOn.js",
+    "file": "assets/hero-XBypH8Wz.js",
     "name": "hero",
     "src": "resources/js/blocks/hero.js",
     "isDynamicEntry": true,
     "imports": [
-      "resources/js/app.js",
-      "_swiper-IH7kTFbR.js"
+      "_pagination-Bt5fgrpW.js",
+      "_swiper-F5DH01ul.js"
     ],
     "css": [
-      "assets/navigation-_Ms0R5o1.css",
       "assets/swiper-HzbfsHSZ.css"
     ]
   },
   "resources/js/blocks/info.js": {
-    "file": "assets/info-DhZUkOBZ.js",
+    "file": "assets/info-Dku_20r4.js",
     "name": "info",
     "src": "resources/js/blocks/info.js",
     "isDynamicEntry": true
   },
   "resources/js/blocks/places.js": {
-    "file": "assets/places-ZpIALJnH.js",
+    "file": "assets/places-6zeNF6Pr.js",
     "name": "places",
     "src": "resources/js/blocks/places.js",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_swiper-IH7kTFbR.js"
+      "_swiper-F5DH01ul.js"
     ]
   },
   "resources/js/blocks/reviews.js": {
-    "file": "assets/reviews-BKryjy_h.js",
+    "file": "assets/reviews-DjizatLq.js",
     "name": "reviews",
     "src": "resources/js/blocks/reviews.js",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_pagination-DWGMTTVh.js",
-      "_swiper-IH7kTFbR.js"
+      "_pagination-Bt5fgrpW.js",
+      "_swiper-F5DH01ul.js"
     ],
     "css": [
       "assets/navigation-_Ms0R5o1.css",
@@ -159,12 +166,12 @@
     ]
   },
   "resources/js/blocks/tabs.js": {
-    "file": "assets/tabs-CACuYua0.js",
+    "file": "assets/tabs--r4AQ9Tg.js",
     "name": "tabs",
     "src": "resources/js/blocks/tabs.js",
     "isDynamicEntry": true,
     "imports": [
-      "_swiper-IH7kTFbR.js"
+      "_swiper-F5DH01ul.js"
     ],
     "css": [
       "assets/tabs-BlRuW1W2.css",
@@ -172,14 +179,14 @@
     ]
   },
   "resources/js/blocks/team.js": {
-    "file": "assets/team-B22LL9Og.js",
+    "file": "assets/team-B7w7V8LB.js",
     "name": "team",
     "src": "resources/js/blocks/team.js",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_pagination-DWGMTTVh.js",
-      "_swiper-IH7kTFbR.js"
+      "_pagination-Bt5fgrpW.js",
+      "_swiper-F5DH01ul.js"
     ],
     "css": [
       "assets/navigation-_Ms0R5o1.css",
@@ -187,13 +194,13 @@
     ]
   },
   "resources/js/blocks/values.js": {
-    "file": "assets/values-CAGX-SUB.js",
+    "file": "assets/values-CjN4OY3P.js",
     "name": "values",
     "src": "resources/js/blocks/values.js",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_swiper-IH7kTFbR.js"
+      "_swiper-F5DH01ul.js"
     ],
     "css": [
       "assets/navigation-_Ms0R5o1.css",

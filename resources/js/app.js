@@ -2,7 +2,6 @@
 // Importujemy tylko Alpine, resztę bibliotek (GSAP) ładujemy globalnie
 
 import Alpine from 'alpinejs';
-import 'baguettebox.js'; 
 
 // Importy zasobów dla Vite (np. obrazy, fonty)
 import.meta.glob(['../images/**', '../fonts/**']);

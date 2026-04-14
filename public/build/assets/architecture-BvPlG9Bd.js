@@ -1,1 +1,0 @@
-import{t as e}from"./swiper-IH7kTFbR.js";import{t}from"./app-dIIqpQXz.js";var n=()=>{let n=document.querySelectorAll(`.architecture-slider`);n.length&&n.forEach(n=>{new e(n,{modules:[t],slidesPerView:1,spaceBetween:20,loop:!0,navigation:{nextEl:`.swiper-button-next`,prevEl:`.swiper-button-prev`}})})};export{n as default};

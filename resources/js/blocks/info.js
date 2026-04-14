@@ -1,3 +1,47 @@
+// resources/js/blocks/info.js
+
+// Importujemy baguetteBox TYLKO tutaj
+import 'baguettebox.js';
+
+/**
+ * Funkcja inicjalizująca baguetteBox na wszystkich galeriach w blokach .b-info
+ */
+function initializeBaguetteBox() {
+  // Znajdź wszystkie galerie na stronie, które nie zostały jeszcze zainicjowane
+  const galleries = document.querySelectorAll('.lightbox-gallery:not([data-baguettebox-initialized])');
+  
+  if (galleries.length > 0) {
+    console.log(`Znaleziono ${galleries.length} nowych galerii. Inicjalizuję baguetteBox...`);
+    
+    // Uruchom baguetteBox na znalezionych galeriach
+    if (typeof window.baguetteBox !== 'undefined') {
+      window.baguetteBox.run('.lightbox-gallery:not([data-baguettebox-initialized])');
+      
+      // Oznacz galerie jako zainicjowane, aby uniknąć podwójnego uruchomienia
+      galleries.forEach(gallery => {
+        gallery.setAttribute('data-baguettebox-initialized', 'true');
+      });
+    } else {
+      console.error('baguetteBox nie jest dostępny w obiekcie window.');
+    }
+  }
+}
+
+/**
+ * Główna funkcja dla bloku info.
+ * Łączy inicjalizację filtrów i galerii.
+ */
+function initializeInfoBlock() {
+  console.log('--- Inicjalizacja bloku Info ---');
+  
+  // Twoja istniejąca funkcja do filtrów
+  initializeInfoBlockFilters(); 
+  
+  // Inicjalizacja galerii
+  initializeBaguetteBox();
+}
+
+
 function initializeInfoBlockFilters() {
   console.log('--- Inicjalizacja filtrów ---');
   const infoBlocks = document.querySelectorAll('.b-info');
@@ -87,15 +131,16 @@ function initializeInfoBlockFilters() {
   });
 }
 
-// Uruchomienie
+// Uruchomienie głównej funkcji
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initializeInfoBlockFilters);
+  document.addEventListener('DOMContentLoaded', initializeInfoBlock);
 } else {
-  initializeInfoBlockFilters();
+  initializeInfoBlock();
 }
 
-// Wsparcie dla edytora ACF
+// Wsparcie dla edytora ACF (bardzo ważne!)
 if (window.acf) {
-  window.acf.addAction('render_block_preview', initializeInfoBlockFilters);
+  // Uruchom przy renderowaniu podglądu w edytorze
+  window.acf.addAction('render_block_preview', initializeInfoBlock);
 }
 
