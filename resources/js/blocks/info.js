@@ -1,46 +1,30 @@
 // resources/js/blocks/info.js
 
-// Importujemy baguetteBox TYLKO tutaj
+// Importujemy baguetteBox i jego style TYLKO tutaj
 import 'baguettebox.js';
+import 'baguettebox.js/dist/baguetteBox.min.css';
+
+console.log('Moduł info.js załadowany.');
 
 /**
- * Funkcja inicjalizująca baguetteBox na wszystkich galeriach w blokach .b-info
+ * Funkcja inicjalizująca baguetteBox.
  */
 function initializeBaguetteBox() {
-  // Znajdź wszystkie galerie na stronie, które nie zostały jeszcze zainicjowane
   const galleries = document.querySelectorAll('.lightbox-gallery:not([data-baguettebox-initialized])');
   
   if (galleries.length > 0) {
-    console.log(`Znaleziono ${galleries.length} nowych galerii. Inicjalizuję baguetteBox...`);
-    
-    // Uruchom baguetteBox na znalezionych galeriach
-    if (typeof window.baguetteBox !== 'undefined') {
-      window.baguetteBox.run('.lightbox-gallery:not([data-baguettebox-initialized])');
-      
-      // Oznacz galerie jako zainicjowane, aby uniknąć podwójnego uruchomienia
-      galleries.forEach(gallery => {
-        gallery.setAttribute('data-baguettebox-initialized', 'true');
-      });
-    } else {
-      console.error('baguetteBox nie jest dostępny w obiekcie window.');
-    }
+    // Czekamy na wszelki wypadek, gdyby baguetteBox potrzebował chwili na dołączenie się do 'window'
+    setTimeout(() => {
+      if (typeof window.baguetteBox !== 'undefined') {
+        console.log('Inicjalizuję baguetteBox...');
+        window.baguetteBox.run('.lightbox-gallery:not([data-baguettebox-initialized])');
+        galleries.forEach(gallery => gallery.setAttribute('data-baguettebox-initialized', 'true'));
+      } else {
+        console.error('Błąd krytyczny: window.baguetteBox jest niezdefiniowane.');
+      }
+    }, 100); // Małe opóźnienie dla pewności
   }
 }
-
-/**
- * Główna funkcja dla bloku info.
- * Łączy inicjalizację filtrów i galerii.
- */
-function initializeInfoBlock() {
-  console.log('--- Inicjalizacja bloku Info ---');
-  
-  // Twoja istniejąca funkcja do filtrów
-  initializeInfoBlockFilters(); 
-  
-  // Inicjalizacja galerii
-  initializeBaguetteBox();
-}
-
 
 function initializeInfoBlockFilters() {
   console.log('--- Inicjalizacja filtrów ---');
@@ -131,16 +115,28 @@ function initializeInfoBlockFilters() {
   });
 }
 
-// Uruchomienie głównej funkcji
+// Uruchomienie
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initializeInfoBlock);
+  document.addEventListener('DOMContentLoaded', initializeInfoBlockFilters);
 } else {
-  initializeInfoBlock();
+  initializeInfoBlockFilters();
 }
 
-// Wsparcie dla edytora ACF (bardzo ważne!)
+// Wsparcie dla edytora ACF
 if (window.acf) {
-  // Uruchom przy renderowaniu podglądu w edytorze
-  window.acf.addAction('render_block_preview', initializeInfoBlock);
+  window.acf.addAction('render_block_preview', initializeInfoBlockFilters);
 }
 
+
+// --- GŁÓWNE WYWOŁANIE ---
+// Inicjalizujemy wszystko od razu, ponieważ ten plik jest ładowany dynamicznie.
+initializeInfoBlockFilters();
+initializeBaguetteBox();
+
+// Wsparcie dla edytora ACF
+if (window.acf) {
+  window.acf.addAction('render_block_preview', () => {
+    initializeInfoBlockFilters();
+    initializeBaguetteBox();
+  });
+}

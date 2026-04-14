@@ -42,15 +42,7 @@ Alpine.start();
 /*--- SKRYPTY URUCHAMIANE PO ZAŁADOWANIU STRONY ---*/
 
 document.addEventListener('DOMContentLoaded', function () {
-  // Inicjalizacja baguetteBox.js dla galerii
-  if (document.querySelector('.lightbox-gallery')) {
-    // Używamy window.baguetteBox, ponieważ tak rejestruje się ta biblioteka
-    if (typeof window.baguetteBox !== 'undefined') {
-        window.baguetteBox.run('.lightbox-gallery');
-    } else {
-        console.error('baguetteBox nie został poprawnie załadowany.');
-    }
-  }
+
 
   // Sprawdzenie, czy globalny GSAP istnieje. Jeśli nie, nic nie robimy, aby uniknąć błędów.
   if (typeof gsap === 'undefined') {
