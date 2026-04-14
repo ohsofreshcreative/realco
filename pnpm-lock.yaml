@@ -11,9 +11,9 @@ importers:
       alpinejs:
         specifier: ^3.14.9
         version: 3.15.2
-      baguettebox.js:
-        specifier: ^1.13.0
-        version: 1.13.0
+      fslightbox:
+        specifier: ^3.7.5
+        version: 3.7.5
       gsap:
         specifier: ^3.13.0
         version: 3.13.0
@@ -692,9 +692,6 @@ packages:
     peerDependencies:
       postcss: ^8.1.0
 
-  baguettebox.js@1.13.0:
-    resolution: {integrity: sha512-/Hsb8QVqNsizgbmdf/Tnt19jF5gMLhkYIboc3jktIR+ftiyCG+hvaM7O025bBUnQtsTcfhuiojALsCB90OpmCQ==}
-
   baseline-browser-mapping@2.8.32:
     resolution: {integrity: sha512-OPz5aBThlyLFgxyhdwf/s2+8ab3OvT7AdTNvKHBwpXomIYeXqpUUuT8LrdtxZSsWJ4R4CU1un4XGh5Ez3nlTpw==}
     hasBin: true
@@ -754,10 +751,6 @@ packages:
   electron-to-chromium@1.5.267:
     resolution: {integrity: sha512-0Drusm6MVRXSOJpGbaSVgcQsuB4hEkMpHXaVstcPmhu5LIedxs1xNK/nIxmQIU/RPC0+1/o0AVZfBTkTNJOdUw==}
 
-  enhanced-resolve@5.18.3:
-    resolution: {integrity: sha512-d4lC8xfavMeBjzGr2vECC3fsGXziXZQyJxD868h2M/mBI3PwAuODxAkLkq5HYuvrPYcUtiLzsTo8U3PgX3Ocww==}
-    engines: {node: '>=10.13.0'}
-
   enhanced-resolve@5.20.0:
     resolution: {integrity: sha512-/ce7+jQ1PQ6rVXwe+jKEg5hW5ciicHwIQUagZkp6IufBoY3YDgdTTY1azVs0qoRgVmvsNB+rbjLJxDAeHHtwsQ==}
     engines: {node: '>=10.13.0'}
@@ -816,6 +809,9 @@ packages:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
+
+  fslightbox@3.7.5:
+    resolution: {integrity: sha512-swEUrwMOyiBhdkPf3GXj4nxARX5d8/9yfVCdxgPLl9+ZMiacUTub9O2wxLI0Y2G2jI85Qxfqpv2I24vlbx0zfg==}
 
   gensync@1.0.0-beta.2:
     resolution: {integrity: sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==}
@@ -1818,8 +1814,6 @@ snapshots:
       postcss: 8.5.8
       postcss-value-parser: 4.2.0
 
-  baguettebox.js@1.13.0: {}
-
   baseline-browser-mapping@2.8.32: {}
 
   baseline-browser-mapping@2.9.11: {}
@@ -1863,11 +1857,6 @@ snapshots:
   electron-to-chromium@1.5.262: {}
 
   electron-to-chromium@1.5.267: {}
-
-  enhanced-resolve@5.18.3:
-    dependencies:
-      graceful-fs: 4.2.11
-      tapable: 2.3.0
 
   enhanced-resolve@5.20.0:
     dependencies:
@@ -1935,6 +1924,8 @@ snapshots:
 
   fsevents@2.3.3:
     optional: true
+
+  fslightbox@3.7.5: {}
 
   gensync@1.0.0-beta.2: {}
 
@@ -2265,7 +2256,7 @@ snapshots:
       acorn-import-phases: 1.0.4(acorn@8.15.0)
       browserslist: 4.28.1
       chrome-trace-event: 1.0.4
-      enhanced-resolve: 5.18.3
+      enhanced-resolve: 5.20.0
       es-module-lexer: 1.7.0
       eslint-scope: 5.1.1
       events: 3.3.0

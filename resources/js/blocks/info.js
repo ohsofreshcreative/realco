@@ -1,30 +1,4 @@
-// resources/js/blocks/info.js
 
-// Importujemy baguetteBox i jego style TYLKO tutaj
-import 'baguettebox.js';
-import 'baguettebox.js/dist/baguetteBox.min.css';
-
-console.log('Moduł info.js załadowany.');
-
-/**
- * Funkcja inicjalizująca baguetteBox.
- */
-function initializeBaguetteBox() {
-  const galleries = document.querySelectorAll('.lightbox-gallery:not([data-baguettebox-initialized])');
-  
-  if (galleries.length > 0) {
-    // Czekamy na wszelki wypadek, gdyby baguetteBox potrzebował chwili na dołączenie się do 'window'
-    setTimeout(() => {
-      if (typeof window.baguetteBox !== 'undefined') {
-        console.log('Inicjalizuję baguetteBox...');
-        window.baguetteBox.run('.lightbox-gallery:not([data-baguettebox-initialized])');
-        galleries.forEach(gallery => gallery.setAttribute('data-baguettebox-initialized', 'true'));
-      } else {
-        console.error('Błąd krytyczny: window.baguetteBox jest niezdefiniowane.');
-      }
-    }, 100); // Małe opóźnienie dla pewności
-  }
-}
 
 function initializeInfoBlockFilters() {
   console.log('--- Inicjalizacja filtrów ---');

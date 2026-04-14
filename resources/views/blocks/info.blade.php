@@ -38,14 +38,13 @@ $sectionClass .= ' ' . $background;
 				@if (!empty($g_info['typy_domow']))
 <div class="mt-8">
     <h5 class="text-xl font-bold mb-4">Dostępne typy domów:</h5>
-    {{-- Dodajemy klasę, na której będzie działać baguetteBox --}}
-    <div class="flex flex-col gap-4 lightbox-gallery"> 
+    <div class="flex flex-col gap-4"> 
         @foreach ($g_info['typy_domow'] as $typ)
         <div class="flex items-center gap-4">
             @if (!empty($typ['image']))
-            {{-- Link musi otaczać obrazek, href wskazuje na dużą wersję --}}
-            <a href="{{ $typ['image']['url'] }}" data-caption="{{ $typ['title'] }}">
-                <img src="{{ $typ['image']['sizes']['thumbnail'] }}" alt="{{ $typ['image']['alt'] ?? $typ['title'] }}" class="w-16 h-16 rounded-full object-cover border-2 border-white shadow-md">
+            {{-- Link z atrybutem data-fslightbox --}}
+            <a href="{{ $typ['image']['url'] }}" data-fslightbox="gallery-{{ $unique_id }}" data-caption="{{ $typ['title'] }}">
+                <img src="{{ $typ['image']['sizes']['thumbnail'] }}" alt="{{ $typ['image']['alt'] ?? $typ['title'] }}" class="w-16 h-16 rounded-full object-cover border-2 border-white shadow-md cursor-pointer">
             </a>
             @endif
             

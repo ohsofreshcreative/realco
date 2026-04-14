@@ -2,6 +2,10 @@
 // Importujemy tylko Alpine, resztę bibliotek (GSAP) ładujemy globalnie
 
 import Alpine from 'alpinejs';
+import fslightbox from 'fslightbox';
+
+// Ustawienie fslightbox globalnie, aby był dostępny w widokach Blade
+window.fslightbox = fslightbox;
 
 // Importy zasobów dla Vite (np. obrazy, fonty)
 import.meta.glob(['../images/**', '../fonts/**']);
@@ -24,6 +28,11 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.querySelector('.b-gallery')) import('./blocks/gallery');
   if (document.querySelector('.b-info')) import('./blocks/info');
   if (document.querySelector('.b-architecture')) import('./blocks/architecture');
+
+  // Odśwież fslightbox po dynamicznym załadowaniu bloków
+  if (window.fslightbox) {
+    window.fslightbox.refresh();
+  }
 });
 
 /*--- NOT USED ---*/
@@ -42,8 +51,6 @@ Alpine.start();
 /*--- SKRYPTY URUCHAMIANE PO ZAŁADOWANIU STRONY ---*/
 
 document.addEventListener('DOMContentLoaded', function () {
-
-
   // Sprawdzenie, czy globalny GSAP istnieje. Jeśli nie, nic nie robimy, aby uniknąć błędów.
   if (typeof gsap === 'undefined') {
     console.error(
