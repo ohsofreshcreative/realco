@@ -120,9 +120,6 @@
 	}
 
 	.__table-wrapper {
-		a.table-link {
-			text-decoration: underline !important;
-		}
 
 		.__thead {
 			.__th {
@@ -230,3 +227,8 @@
 		}
 	}
 }
+
+
+		a.table-link {
+			text-decoration: underline !important;
+		}
