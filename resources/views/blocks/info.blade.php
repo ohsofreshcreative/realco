@@ -146,8 +146,8 @@ $sectionClass .= ' ' . $background;
 							@endif
 							@endif
 						</div>
-						<div class="__td" data-label="Metraż">{{ $row['metraz'] }}</div>
-						<div class="__td" data-label="Działka">{{ $row['dzialka'] }}</div>
+						<div class="__td" data-label="Metraż">{{ $row['metraz'] }}  m²</div>
+						<div class="__td" data-label="Działka">{{ $row['dzialka'] }}  m²</div>
 					<!-- 	<div class="__td" data-label="Typ domu">{{ $row['typ_domu_label'] }}</div> -->
 						<div class="__td" data-label="Status">
 							<div class="flex items-center gap-2">
