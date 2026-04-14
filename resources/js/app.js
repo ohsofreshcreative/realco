@@ -1,22 +1,35 @@
 /*--- GŁÓWNE IMPORTY ---*/
-// Importujemy tylko Alpine, resztę bibliotek (GSAP) ładujemy globalnie
-
 import Alpine from 'alpinejs';
 import fslightbox from 'fslightbox';
 
-// Ustawienie fslightbox globalnie, aby był dostępny w widokach Blade
+// Ustawienie fslightbox globalnie, aby był dostępny
 window.fslightbox = fslightbox;
 
-// Importy zasobów dla Vite (np. obrazy, fonty)
+// Importy zasobów dla Vite
 import.meta.glob(['../images/**', '../fonts/**']);
 
 // Twoje niestandardowe moduły JS
 import './menubar.js';
 import './footer-accordion.js';
 
-/*--- USED ---*/
+/*--- NOT USED ---*/
+import './blocks/works.js';
+import './blocks/category-posts.js';
+import './blocks/how.js';
+import './blocks/overlap.js';
+import './blocks/calc.js';
+import './blocks/category-slider.js';
 
-document.addEventListener('DOMContentLoaded', () => {
+/*--- INICJALIZACJA BIBLIOTEK ---*/
+window.Alpine = Alpine;
+Alpine.start();
+gsap.registerPlugin(ScrollTrigger);
+
+/*--- GŁÓWNY SKRYPT URUCHAMIANY PO ZAŁADOWANIU STRONY ---*/
+document.addEventListener('DOMContentLoaded', function () {
+  console.log('DOM w pełni załadowany. Uruchamiam skrypty...');
+
+  // 1. Dynamiczne importy bloków
   if (document.querySelector('.b-help')) import('./blocks/help');
   if (document.querySelector('.b-team')) import('./blocks/team');
   if (document.querySelector('.b-reviews')) import('./blocks/reviews');
@@ -29,37 +42,25 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.querySelector('.b-info')) import('./blocks/info');
   if (document.querySelector('.b-architecture')) import('./blocks/architecture');
 
-  // Odśwież fslightbox po dynamicznym załadowaniu bloków
-  if (window.fslightbox) {
-    window.fslightbox.refresh();
-  }
-});
+  // 2. RĘCZNE ODŚWIEŻENIE FSLIGHTBOX
+  // Czekamy chwilę po załadowaniu bloków i zmuszamy fslightbox do ponownego przeskanowania strony.
+  setTimeout(() => {
+    if (window.fslightbox && window.fslightbox.instances) {
+      for (const key in window.fslightbox.instances) {
+        window.fslightbox.instances[key].props.sources = [];
+        window.fslightbox.instances[key].handleReceivedSources();
+      }
+      console.log('FsLightbox odświeżony.');
+    }
+  }, 200); // 200ms opóźnienia dla pewności
 
-/*--- NOT USED ---*/
-import './blocks/works.js';
-import './blocks/category-posts.js';
-import './blocks/how.js';
-import './blocks/overlap.js';
-import './blocks/calc.js';
-import './blocks/category-slider.js';
-
-/*--- INICJALIZACJA BIBLIOTEK ---*/
-// Uruchom Alpine.js
-window.Alpine = Alpine;
-Alpine.start();
-
-/*--- SKRYPTY URUCHAMIANE PO ZAŁADOWANIU STRONY ---*/
-
-document.addEventListener('DOMContentLoaded', function () {
-  // Sprawdzenie, czy globalny GSAP istnieje. Jeśli nie, nic nie robimy, aby uniknąć błędów.
+  // 3. Inicjalizacja GSAP
   if (typeof gsap === 'undefined') {
-    console.error(
-      'GSAP nie został załadowany globalnie. Sprawdź plik app/setup.php lub functions.php'
-    );
+    console.error('GSAP nie został załadowany.');
     return;
   }
 
-  // --- TWOJE ISTNIEJĄCE ANIMACJE GSAP (TERAZ POWINNY DZIAŁAĆ) ---
+  // Animacje GSAP dla sekcji
   gsap.utils.toArray("[data-gsap-anim='section']").forEach((section) => {
     const standardImages = section.querySelectorAll(
       "[data-gsap-element='img']"
@@ -132,36 +133,27 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
   });
-});
 
-/*--- LINE ----*/
-
-gsap.registerPlugin(ScrollTrigger);
-
-document.addEventListener('DOMContentLoaded', function () {
+  // Animacja linii
   const line = document.querySelector('.animated-line');
-  if (!line) return;
-
-  const length = line.getTotalLength();
-
-  gsap.set(line, {
-    strokeDasharray: length,
-    strokeDashoffset: length,
-  });
-
-  gsap.to(line, {
-    strokeDashoffset: 0,
-    duration: 0.5,
-    ease: 'power1.inOut',
-
-    scrollTrigger: {
-      trigger: line,
-      start: 'top 80%',
-      end: 'bottom 20%',
-      toggleActions: 'play none none none',
-      // markers: true,
-    },
-  });
+  if (line) {
+    const length = line.getTotalLength();
+    gsap.set(line, {
+      strokeDasharray: length,
+      strokeDashoffset: length,
+    });
+    gsap.to(line, {
+      strokeDashoffset: 0,
+      duration: 0.5,
+      ease: 'power1.inOut',
+      scrollTrigger: {
+        trigger: line,
+        start: 'top 80%',
+        end: 'bottom 20%',
+        toggleActions: 'play none none none',
+      },
+    });
+  }
 });
 
 
