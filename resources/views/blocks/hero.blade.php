@@ -18,10 +18,10 @@ $sectionClass .= $nomt ? ' !mt-0' : '';
 					<div class="__content c-main mx-auto relative z-20 py-0 md:py-30 order-2 lg:order-1">
 						<div class="w-full md:w-1/2 lg:w-2/3">
 							<img data-gsap-element="img" src="/wp-content/uploads/2026/03/logo-white.svg" />
-							<h1 data-gsap-element="header" class="m-header text-white mt-2">
+							<h1 data-gsap-element="header" class="m-header text-h2 text-white mt-2">
 								{{ $slide['title'] }}
 							</h1>
-							<div data-gsap-element="txt" class="">
+							<div data-gsap-element="txt" class="text-white text-2xl">
 								{!! $slide['txt'] !!}
 							</div>
 							@if (!empty($slide['button1']))
