@@ -38,7 +38,7 @@
     "src": "editor.deps.json"
   },
   "resources/css/app.css": {
-    "file": "assets/app-Clus5rT1.css",
+    "file": "assets/app-DdgdjfR4.css",
     "name": "app",
     "names": [
       "app.css"
@@ -47,7 +47,7 @@
     "isEntry": true
   },
   "resources/css/editor.css": {
-    "file": "assets/editor-Dp_uEl2F.css",
+    "file": "assets/editor-DIIJYV1h.css",
     "name": "editor",
     "names": [
       "editor.css"
@@ -56,7 +56,7 @@
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-CL0uD8Y5.js",
+    "file": "assets/app-BEbArWSq.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
@@ -85,7 +85,7 @@
     "isDynamicEntry": true
   },
   "resources/js/blocks/architecture.js": {
-    "file": "assets/architecture-BrRqboSD.js",
+    "file": "assets/architecture-DjgNWjNb.js",
     "name": "architecture",
     "src": "resources/js/blocks/architecture.js",
     "isDynamicEntry": true,
@@ -95,7 +95,7 @@
     ]
   },
   "resources/js/blocks/gallery.js": {
-    "file": "assets/gallery-DFSIkBOQ.js",
+    "file": "assets/gallery-CQdRglBo.js",
     "name": "gallery",
     "src": "resources/js/blocks/gallery.js",
     "isDynamicEntry": true,
@@ -106,7 +106,7 @@
     ]
   },
   "resources/js/blocks/help.js": {
-    "file": "assets/help-COYoFNfZ.js",
+    "file": "assets/help-BeJ0QkBB.js",
     "name": "help",
     "src": "resources/js/blocks/help.js",
     "isDynamicEntry": true,
@@ -141,7 +141,7 @@
     "isDynamicEntry": true
   },
   "resources/js/blocks/places.js": {
-    "file": "assets/places-41xUK_wH.js",
+    "file": "assets/places-TTAuqRSG.js",
     "name": "places",
     "src": "resources/js/blocks/places.js",
     "isDynamicEntry": true,
@@ -151,7 +151,7 @@
     ]
   },
   "resources/js/blocks/reviews.js": {
-    "file": "assets/reviews-DZKFtFI7.js",
+    "file": "assets/reviews-DVDeckUw.js",
     "name": "reviews",
     "src": "resources/js/blocks/reviews.js",
     "isDynamicEntry": true,
@@ -179,7 +179,7 @@
     ]
   },
   "resources/js/blocks/team.js": {
-    "file": "assets/team-BdW3Oyix.js",
+    "file": "assets/team-D4K5Bhj1.js",
     "name": "team",
     "src": "resources/js/blocks/team.js",
     "isDynamicEntry": true,
@@ -194,7 +194,7 @@
     ]
   },
   "resources/js/blocks/values.js": {
-    "file": "assets/values-CLrmy9SW.js",
+    "file": "assets/values-BzUEi-Pz.js",
     "name": "values",
     "src": "resources/js/blocks/values.js",
     "isDynamicEntry": true,
