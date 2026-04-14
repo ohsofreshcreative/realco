@@ -36,28 +36,28 @@ $sectionClass .= ' ' . $background;
 				</div>
 
 				@if (!empty($g_info['typy_domow']))
-<div class="mt-8">
-    <h5 class="text-xl font-bold mb-4">Dostępne typy domów:</h5>
-    <div class="flex flex-col gap-4"> 
-        @foreach ($g_info['typy_domow'] as $typ)
-        <div class="flex items-center gap-4">
-            @if (!empty($typ['image']))
-            {{-- Link z atrybutem data-fslightbox --}}
-            <a href="{{ $typ['image']['url'] }}" data-fslightbox="gallery-{{ $unique_id }}" data-caption="{{ $typ['title'] }}" class="relative group lightbox-thumbnail">
-                <img src="{{ $typ['image']['sizes']['thumbnail'] }}" alt="{{ $typ['image']['alt'] ?? $typ['title'] }}" class="w-16 h-16 rounded-full object-cover border-2 border-white shadow-md">
-                {{-- Ikona lupy --}}
-                <img src="/wp-content/uploads/2026/04/zoom.svg" alt="Powiększ" class="lupka absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 pointer-events-none">
-            </a>
-            @endif
-            
-            @if (!empty($typ['title']))
-            <span class="font-semibold">{{ $typ['title'] }}</span>
-            @endif
-        </div>
-        @endforeach
-    </div>
-</div>
-@endif
+				<div data-gsap-element="list" class="mt-8">
+					<h5 class="text-xl font-bold mb-4">Dostępne typy domów:</h5>
+					<div class="flex flex-col gap-4">
+						@foreach ($g_info['typy_domow'] as $typ)
+						<div class="flex items-center gap-4">
+							@if (!empty($typ['image']))
+							{{-- Link z atrybutem data-fslightbox --}}
+							<a href="{{ $typ['image']['url'] }}" data-fslightbox="gallery-{{ $unique_id }}" data-caption="{{ $typ['title'] }}" class="relative group lightbox-thumbnail">
+								<img src="{{ $typ['image']['sizes']['thumbnail'] }}" alt="{{ $typ['image']['alt'] ?? $typ['title'] }}" class="w-16 h-16 rounded-full object-cover border-2 border-white shadow-md">
+								{{-- Ikona lupy --}}
+								<img src="/wp-content/uploads/2026/04/zoom.svg" alt="Powiększ" class="lupka absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 pointer-events-none">
+							</a>
+							@endif
+
+							@if (!empty($typ['title']))
+							<span class="font-semibold">{{ $typ['title'] }}</span>
+							@endif
+						</div>
+						@endforeach
+					</div>
+				</div>
+				@endif
 
 				@if (!empty($g_info['button']))
 				<a data-gsap-element="btn" class="second-btn m-btn align-self-bottom" href="{{ $g_info['button']['url'] }}">{{ $g_info['button']['title'] }}</a>
@@ -157,24 +157,24 @@ $sectionClass .= ' ' . $background;
 							</div>
 						</div>
 						<div class="__td" data-label="Cena">
-							  @if (!empty($row['cena']))
-        {{ $row['cena'] }} zł
-        @if (!empty($row['metraz']))
-            @php
-            $numeric_cena = (float) str_replace(',', '.', preg_replace('/[^\d,.]/', '', $row['cena']));
-            $numeric_metraz = (float) str_replace(',', '.', preg_replace('/[^\d,.]/', '', $row['metraz']));
-            @endphp
-            @if ($numeric_metraz > 0)
-            <span class="block text-sm text-gray-500">
-                ({{ number_format($numeric_cena / $numeric_metraz, 2, ',', ' ') }} zł/m²)
-            </span>
-            @endif
-        @endif
-    @endif
+							@if (!empty($row['cena']))
+							{{ $row['cena'] }} zł
+							@if (!empty($row['metraz']))
+							@php
+							$numeric_cena = (float) str_replace(',', '.', preg_replace('/[^\d,.]/', '', $row['cena']));
+							$numeric_metraz = (float) str_replace(',', '.', preg_replace('/[^\d,.]/', '', $row['metraz']));
+							@endphp
+							@if ($numeric_metraz > 0)
+							<span class="block text-sm text-gray-500">
+								({{ number_format($numeric_cena / $numeric_metraz, 2, ',', ' ') }} zł/m²)
+							</span>
+							@endif
+							@endif
+							@endif
 						</div>
-						<div class="__td" data-label="Metraż">{{ $row['metraz'] }}  m²</div>
-						<div class="__td" data-label="Działka">{{ $row['dzialka'] }}  m²</div>
-					<!-- 	<div class="__td" data-label="Typ domu">{{ $row['typ_domu_label'] }}</div> -->
+						<div class="__td" data-label="Metraż">{{ $row['metraz'] }} m²</div>
+						<div class="__td" data-label="Działka">{{ $row['dzialka'] }} m²</div>
+						<!-- 	<div class="__td" data-label="Typ domu">{{ $row['typ_domu_label'] }}</div> -->
 						<div class="__td" data-label="Status">
 							<div class="flex items-center gap-2">
 								<span class="status-label status-{{ $row['status'] }}">{{ $row['status'] == 'a' ? 'Dostępny' : ($row['status'] == 'b' ? 'Zarezerwowany' : 'Sprzedany') }}</span>
@@ -190,8 +190,8 @@ $sectionClass .= ' ' . $background;
 								<a href="#zapisz-sie" class="table-link !underline">Umów spotkanie</a>
 								{{-- NOWY PRZYCISK OTWIERAJĄCY MODAL --}}
 								<button @click="openModal('{{ $row['dom'] }}')" class="table-link !underline cursor-pointer text-left text-secondary">
-    Zarezerwuj dom
-</button>
+									Zarezerwuj dom
+								</button>
 							</div>
 						</div>
 					</div>
@@ -248,24 +248,24 @@ $sectionClass .= ' ' . $background;
 			</div>
 		</div>
 	</div>
-	
-<script>
-    function infoBlock() {
-        return {
-            modalOpen: false,
-            houseName: '',
-            openModal(name) {
-                this.modalOpen = true;
-                this.houseName = name;
-                // Czekamy na wyrenderowanie modala przez Alpine
-                this.$nextTick(() => {
-                    const hiddenInput = document.querySelector('#house-name');
-                    if (hiddenInput) {
-                        hiddenInput.value = this.houseName;
-                    }
-                });
-            }
-        }
-    }
-</script>
+
+	<script>
+		function infoBlock() {
+			return {
+				modalOpen: false,
+				houseName: '',
+				openModal(name) {
+					this.modalOpen = true;
+					this.houseName = name;
+					// Czekamy na wyrenderowanie modala przez Alpine
+					this.$nextTick(() => {
+						const hiddenInput = document.querySelector('#house-name');
+						if (hiddenInput) {
+							hiddenInput.value = this.houseName;
+						}
+					});
+				}
+			}
+		}
+	</script>
 </section>
