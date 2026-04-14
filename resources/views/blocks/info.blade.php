@@ -128,7 +128,7 @@ $sectionClass .= ' ' . $background;
 							<div class="flex flex-col">
 								<span>{{ $row['dom'] }}</span>
 								@if (!empty($row['prospekt']))
-								<a href="{{ $row['prospekt']['url'] }}" target="_blank" class="table-link">Prospekt</a>
+								<a href="{{ $row['prospekt']['url'] }}" target="_blank" class="table-link !underline">Prospekt</a>
 								@endif
 							</div>
 						</div>
