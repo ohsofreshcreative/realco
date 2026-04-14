@@ -2,7 +2,7 @@
 // Importujemy tylko Alpine, resztę bibliotek (GSAP) ładujemy globalnie
 
 import Alpine from 'alpinejs';
-import baguetteBox from 'baguettebox.js';
+import 'baguettebox.js'; 
 
 // Importy zasobów dla Vite (np. obrazy, fonty)
 import.meta.glob(['../images/**', '../fonts/**']);
@@ -45,7 +45,12 @@ Alpine.start();
 document.addEventListener('DOMContentLoaded', function () {
   // Inicjalizacja baguetteBox.js dla galerii
   if (document.querySelector('.lightbox-gallery')) {
-    baguetteBox.run('.lightbox-gallery');
+    // Używamy window.baguetteBox, ponieważ tak rejestruje się ta biblioteka
+    if (typeof window.baguetteBox !== 'undefined') {
+        window.baguetteBox.run('.lightbox-gallery');
+    } else {
+        console.error('baguetteBox nie został poprawnie załadowany.');
+    }
   }
 
   // Sprawdzenie, czy globalny GSAP istnieje. Jeśli nie, nic nie robimy, aby uniknąć błędów.
