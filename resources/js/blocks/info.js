@@ -99,18 +99,3 @@ if (window.acf) {
   window.acf.addAction('render_block_preview', initializeInfoBlockFilters);
 }
 
-// resources/js/blocks/info.js
-
-// Sprawdzamy, czy baguetteBox jest dostępny globalnie
-if (typeof baguetteBox !== 'undefined') {
-  // Znajdujemy wszystkie galerie lightbox w obrębie bloków .b-info
-  const infoGalleries = document.querySelectorAll('.b-info .lightbox-gallery');
-  
-  if (infoGalleries.length > 0) {
-    // Inicjalizujemy baguetteBox tylko dla tych konkretnych galerii
-    baguetteBox.run('.b-info .lightbox-gallery');
-    console.log('baguetteBox initialized for .b-info block.');
-  }
-} else {
-  console.error('baguetteBox is not defined when info.js is executed.');
-}
