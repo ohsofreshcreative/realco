@@ -35,6 +35,29 @@ $sectionClass .= ' ' . $background;
 					{!! $g_info['txt'] !!}
 				</div>
 
+				@if (!empty($g_info['typy_domow']))
+<div class="mt-8 lightbox-gallery">
+    <h5 class="text-xl font-bold mb-4">Dostępne typy domów:</h5>
+    <div class="flex flex-col gap-4">
+        @foreach ($g_info['typy_domow'] as $typ)
+        <div class="flex items-center gap-4">
+            {{-- Obrazek otwierany w lightboxie --}}
+            @if (!empty($typ['image']))
+            <a href="{{ $typ['image']['url'] }}">
+                <img src="{{ $typ['image']['sizes']['thumbnail'] }}" alt="{{ $typ['image']['alt'] ?? $typ['title'] }}" class="w-16 h-16 rounded-full object-cover border-2 border-white shadow-md">
+            </a>
+            @endif
+            
+            {{-- Tytuł --}}
+            @if (!empty($typ['title']))
+            <span class="font-semibold">{{ $typ['title'] }}</span>
+            @endif
+        </div>
+        @endforeach
+    </div>
+</div>
+@endif
+
 				@if (!empty($g_info['button']))
 				<a data-gsap-element="btn" class="second-btn m-btn align-self-bottom" href="{{ $g_info['button']['url'] }}">{{ $g_info['button']['title'] }}</a>
 				@endif

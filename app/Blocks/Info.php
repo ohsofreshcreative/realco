@@ -53,6 +53,17 @@ class Info extends Block
 				'toolbar' => 'full',
 				'media_upload' => true,
 			])
+			->addRepeater('typy_domow', [
+                'label' => 'Typy domów',
+                'button_label' => 'Dodaj typ domu',
+            ])
+                ->addImage('image', [
+                    'label' => 'Zdjęcie',
+                    'return_format' => 'array',
+                    'preview_size' => 'thumbnail',
+                ])
+                ->addText('title', ['label' => 'Tytuł'])
+            ->endRepeater()
 			->addLink('button', [
 				'label' => 'Przycisk',
 				'return_format' => 'array',
