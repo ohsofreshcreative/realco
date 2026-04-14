@@ -22,7 +22,7 @@ $sectionClass .= $nomt ? ' !mt-0' : '';
                             <h1 data-gsap-element="header" class="m-header text-h2 text-white mt-2">
                                 {{ $slide['title'] }}
                             </h1>
-                            <div data-gsap-element="txt" class="text-white text-[40px]">
+                            <div data-gsap-element="txt" class="text-white text-[32px]">
                                 {!! $slide['txt'] !!}
                             </div>
                             @if (!empty($slide['button1']))
