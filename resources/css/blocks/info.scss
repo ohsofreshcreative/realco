@@ -235,6 +235,9 @@ a.table-link {
 .lightbox-thumbnail {
 	position: relative;
 	display: inline-block;
+	width: 4rem; /* 64px */
+	height: 4rem; /* 64px */
+	border-radius: 50%;
 
 	&::after {
 		content: '';
@@ -253,10 +256,10 @@ a.table-link {
 		background-color: rgba(0, 0, 0, 0.6);
 	}
 
-	img {
+	> img {
 		display: block;
 		width: 100%;
-		height: auto;
+		height: 100%;
 	}
 
 	.absolute {
