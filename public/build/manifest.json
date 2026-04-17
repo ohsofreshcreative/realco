@@ -56,7 +56,7 @@
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-DLej4lwv.js",
+    "file": "assets/app-BCU2Sfg5.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
@@ -85,17 +85,21 @@
     "isDynamicEntry": true
   },
   "resources/js/blocks/architecture.js": {
-    "file": "assets/architecture-DmJzrKdN.js",
+    "file": "assets/architecture-DOG9ZMWx.js",
     "name": "architecture",
     "src": "resources/js/blocks/architecture.js",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
       "_swiper-F5DH01ul.js"
+    ],
+    "css": [
+      "assets/navigation-_Ms0R5o1.css",
+      "assets/swiper-HzbfsHSZ.css"
     ]
   },
   "resources/js/blocks/gallery.js": {
-    "file": "assets/gallery-DLCs0m5J.js",
+    "file": "assets/gallery-Bk_FPGJc.js",
     "name": "gallery",
     "src": "resources/js/blocks/gallery.js",
     "isDynamicEntry": true,
@@ -106,7 +110,7 @@
     ]
   },
   "resources/js/blocks/help.js": {
-    "file": "assets/help-DWLsAfou.js",
+    "file": "assets/help-CkQfR-XS.js",
     "name": "help",
     "src": "resources/js/blocks/help.js",
     "isDynamicEntry": true,
@@ -122,7 +126,7 @@
     ]
   },
   "resources/js/blocks/hero.js": {
-    "file": "assets/hero-XBypH8Wz.js",
+    "file": "assets/hero-Boe9xChr.js",
     "name": "hero",
     "src": "resources/js/blocks/hero.js",
     "isDynamicEntry": true,
@@ -141,7 +145,7 @@
     "isDynamicEntry": true
   },
   "resources/js/blocks/places.js": {
-    "file": "assets/places-DePyRMo6.js",
+    "file": "assets/places-BaRZafDE.js",
     "name": "places",
     "src": "resources/js/blocks/places.js",
     "isDynamicEntry": true,
@@ -151,7 +155,7 @@
     ]
   },
   "resources/js/blocks/reviews.js": {
-    "file": "assets/reviews-Dxa5n3M_.js",
+    "file": "assets/reviews-B1YIstCR.js",
     "name": "reviews",
     "src": "resources/js/blocks/reviews.js",
     "isDynamicEntry": true,
@@ -166,7 +170,7 @@
     ]
   },
   "resources/js/blocks/tabs.js": {
-    "file": "assets/tabs--r4AQ9Tg.js",
+    "file": "assets/tabs-CZ9Wlc5C.js",
     "name": "tabs",
     "src": "resources/js/blocks/tabs.js",
     "isDynamicEntry": true,
@@ -179,7 +183,7 @@
     ]
   },
   "resources/js/blocks/team.js": {
-    "file": "assets/team-CSmsawhE.js",
+    "file": "assets/team-CWv50sNm.js",
     "name": "team",
     "src": "resources/js/blocks/team.js",
     "isDynamicEntry": true,
@@ -194,7 +198,7 @@
     ]
   },
   "resources/js/blocks/values.js": {
-    "file": "assets/values-COE7lsEf.js",
+    "file": "assets/values-BgBxtjQf.js",
     "name": "values",
     "src": "resources/js/blocks/values.js",
     "isDynamicEntry": true,

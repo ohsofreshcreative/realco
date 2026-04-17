@@ -1,1 +1,0 @@
-import{t as e}from"./swiper-F5DH01ul.js";import{t}from"./app-DLej4lwv.js";var n=document.querySelectorAll(`.swiper-gallery-places`);n.length&&n.forEach(n=>{let r=n.querySelector(`.__next`),i=n.querySelector(`.__prev`);new e(n,{modules:[t],loop:!0,slidesPerView:1,spaceBetween:10,navigation:{nextEl:r,prevEl:i}})});
