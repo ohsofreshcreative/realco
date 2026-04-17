@@ -1,28 +1,26 @@
 import Swiper from 'swiper';
 import { Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation'; // Ważne: Dodaj import stylów dla nawigacji
 
-const initArchitectureSlider = () => {
-  const sliders = document.querySelectorAll('.architecture-slider');
+document.querySelectorAll('.architecture-slider').forEach((slider) => {
+  const nextEl = slider.querySelector('.swiper-button-next');
+  const prevEl = slider.querySelector('.swiper-button-prev');
 
-  if (!sliders.length) {
-    return;
+  // Sprawdzenie, czy slider ma przyciski nawigacji
+  if (!nextEl || !prevEl) {
+    console.warn('Slider architecture nie ma przycisków nawigacji.', slider);
+    return; // Nie inicjuj Swipera, jeśli brakuje przycisków
   }
 
-  sliders.forEach((slider) => {
-    const nextEl = slider.querySelector('.swiper-button-next');
-    const prevEl = slider.querySelector('.swiper-button-prev');
-
-    new Swiper(slider, {
-      modules: [Navigation],
-      slidesPerView: 1,
-      spaceBetween: 20,
-      loop: true,
-      navigation: {
-        nextEl: nextEl,
-        prevEl: prevEl,
-      },
-    });
+  new Swiper(slider, {
+    modules: [Navigation],
+    slidesPerView: 1,
+    spaceBetween: 20,
+    loop: true,
+    navigation: {
+      nextEl: nextEl,
+      prevEl: prevEl,
+    },
   });
-};
-
-export default initArchitectureSlider;
+});
