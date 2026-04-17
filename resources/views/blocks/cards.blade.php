@@ -15,8 +15,8 @@ $sectionClass .= ' ' . $background;
 <section data-gsap-anim="section" @if(!empty($section_id)) id="{{ $section_id }}" @endif class="b-cards -smt {{ $sectionClass }} {{ $section_class }}">
 	<div class="__wrapper c-main">
 
-		<div class="__top">
-			<h3 data-gsap-element="header" class="text-p-lighter text-center m-header">{{ strip_tags($g_cards['header']) }}</h3>
+		<div class="__top w-full md:w-2/3">
+			<h3 data-gsap-element="header" class="text-p-lighter m-header">{{ strip_tags($g_cards['header']) }}</h3>
 			<p data-gsap-element="txt">{{ $g_cards['text'] }}</p>
 		</div>
 
