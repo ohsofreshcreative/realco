@@ -38,7 +38,7 @@
     "src": "editor.deps.json"
   },
   "resources/css/app.css": {
-    "file": "assets/app-BGgN69qx.css",
+    "file": "assets/app-DmdHBZRJ.css",
     "name": "app",
     "names": [
       "app.css"
@@ -47,7 +47,7 @@
     "isEntry": true
   },
   "resources/css/editor.css": {
-    "file": "assets/editor-CafZRsBq.css",
+    "file": "assets/editor-CQQI_IVT.css",
     "name": "editor",
     "names": [
       "editor.css"

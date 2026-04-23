@@ -29,4 +29,9 @@ $sectionClass .= ' ' . $background;
 			{!! $g_map['code'] !!}
 		</div>
 
+	
+		<x-button data-gsap-element="btn" class="second-btn btn2 m-btn align-self-bottom text-center !flex mx-auto" href="https://www.google.com/maps/dir/?api=1&origin=Current+Location&destination=Torowa+20,+05-500+Nowa+Iwiczna" target="_blank" style="display:flex !important;">
+			Sprawdź dojazd
+		</x-button>
+
 </section>
