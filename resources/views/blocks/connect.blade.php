@@ -8,6 +8,8 @@ $sectionClass .= $nomt ? ' !mt-0' : '';
 <section data-gsap-anim="section" @if(!empty($section_id)) id="{{ $section_id }}" @endif class="b-connect relative overflow-hidden section-wrapper radius bg-third py-16 -smt {{ $sectionClass }} {{ $section_class }}">
 	<div class="c-main grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-0 items-center relative z-10">
 
+	<p class="text-center font-header text-lg text-third-800 mt-10">Wszystkie wizualizacje mają charakter poglądowy. Elementy techniczne (np. jednostki zewnętrzne pomp ciepła) mogą nie być na nich uwzględnione.</p>
+
 		<div class="__content relative z-10 w-full md:w-3/4 lg:w-2/3 py-0 md:py-20 m-0 md:m-auto">
 			<h4 data-gsap-element="header" class="">{{ $bottom['header'] }}</h4>
 			<div data-gsap-element="txt" class="mt-2">
@@ -45,9 +47,6 @@ $sectionClass .= $nomt ? ' !mt-0' : '';
 </section>
 
 <div class="c-main">
-
-
-	<p class="text-center font-header text-lg text-third-800 mt-10">Wszystkie wizualizacje mają charakter poglądowy. Elementy techniczne (np. jednostki zewnętrzne pomp ciepła) mogą nie być na nich uwzględnione.</p>
 	
 	<div class="flex flex-col md:flex-row gap-8 mt-16">
 		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-center gap-8">
