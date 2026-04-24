@@ -45,6 +45,9 @@ $sectionClass .= $nomt ? ' !mt-0' : '';
 </section>
 
 <div class="c-main">
+
+
+	<p class="text-center font-header text-lg text-third-800 mt-10">Wszystkie wizualizacje mają charakter poglądowy. Elementy techniczne (np. jednostki zewnętrzne pomp ciepła) mogą nie być na nich uwzględnione.</p>
 	
 	<div class="flex flex-col md:flex-row gap-8 mt-16">
 		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-center gap-8">

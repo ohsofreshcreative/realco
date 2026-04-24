@@ -63,5 +63,7 @@ $id = 'gallery-' . $block_id;
 			</div>
 		</div>
 		@endif
+
+	<p class="text-center font-header text-lg text-third-800 mt-10">Wszystkie wizualizacje mają charakter poglądowy. Elementy techniczne (np. jednostki zewnętrzne pomp ciepła) mogą nie być na nich uwzględnione.</p>
 	</div>
 </section>
