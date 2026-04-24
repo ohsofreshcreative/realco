@@ -6,9 +6,9 @@ $sectionClass .= $nomt ? ' !mt-0' : '';
 <!-- connect -->
 
 <section data-gsap-anim="section" @if(!empty($section_id)) id="{{ $section_id }}" @endif class="b-connect relative overflow-hidden section-wrapper radius bg-third py-16 -smt {{ $sectionClass }} {{ $section_class }}">
-	<div class="c-main grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-0 items-center relative z-10">
 
-	<p class="text-center font-header text-lg text-third-800 mt-10">Wszystkie wizualizacje mają charakter poglądowy. Elementy techniczne (np. jednostki zewnętrzne pomp ciepła) mogą nie być na nich uwzględnione.</p>
+	<p class="c-main text-center font-header text-lg text-third-800 mt-10">Wszystkie wizualizacje mają charakter poglądowy. Elementy techniczne (np. jednostki zewnętrzne pomp ciepła) mogą nie być na nich uwzględnione.</p>
+	<div class="c-main grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-0 items-center relative z-10">
 
 		<div class="__content relative z-10 w-full md:w-3/4 lg:w-2/3 py-0 md:py-20 m-0 md:m-auto">
 			<h4 data-gsap-element="header" class="">{{ $bottom['header'] }}</h4>
