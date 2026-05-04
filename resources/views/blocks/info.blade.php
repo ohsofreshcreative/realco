@@ -202,6 +202,8 @@ $sectionClass .= ' ' . $background;
 		</div>
 	</div>
 
+	<p class="text-center font-header text-lg text-third-800 mt-10 w-full md:w-3/4 mx-auto">Cennik obowiązuje od dnia 17.04.2026 i pozostaje aktualny na dzień publikacji. Ceny lokali nie uległy zmianie od momentu jego udostępnienia.</p>
+
 	{{-- NOWA SEKCJA: MODAL --}}
 	<!-- Modal Panel -->
 	<div
@@ -248,6 +250,8 @@ $sectionClass .= ' ' . $background;
 			</div>
 		</div>
 	</div>
+
+
 
 	<script>
 		function infoBlock() {
